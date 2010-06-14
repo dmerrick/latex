@@ -1,0 +1,119 @@
+% Sample HW assignment, demonstrating some bare bones of LaTeX
+%
+% Version of January 20, 2010
+
+\documentclass[12pt]{amsart}
+
+% Always use the 12pt option.  The amsart option invokes a number of
+% additional style files created by the American Mathematical Society
+
+% The following command allows me to insert a comment box into the
+% document.  You will probably never need this when you actually do homework.
+
+\newcommand{\comment}[1]{\vskip.3cm
+\fbox{%
+\parbox{0.93\linewidth}{\footnotesize #1}}
+\vskip.3cm}
+
+\begin{document}
+
+% The commend \noindent keeps LaTeX from indenting my name as the
+% first line of this "paragraph," by the default amount.
+
+\noindent
+David Cruz-Uribe, SFO \\
+Sample Homework  \\
+January 20, 2010
+
+\bigskip
+
+\begin{enumerate}
+
+\item Prove that if $a,\,b$ are positive real numbers, then
+%
+\[\sqrt{ab}\leq \frac{a+b}{2}. \]
+%
+
+\begin{proof}
+  Since $a$ and $b$ are positive, $\sqrt{a}$, $\sqrt{b}$ and
+  $\sqrt{ab}$ exist; furthermore, $\sqrt{ab}=\sqrt{a}\sqrt{b}$ and
+  $(\sqrt{a})^2=a$ and the same holds for $b$.  Since the square of
+  any real number is non-negative, $(\sqrt{a}-\sqrt{b})^2\geq 0$.  If
+  we expand the left-hand side we get
+%
+\[ (\sqrt{a})^2 -2\sqrt{a}\sqrt{b} + (\sqrt{b})^2 \geq 0.  \]
+%
+If we simplify and re-arrange terms we get
+%
+\[ a + b \geq 2\sqrt{ab}, \]
+%
+and dividing by $2$ we get the desired inequality.
+\end{proof}
+
+\comment{The first line of this proof may seem pedantic, and in more
+  advanced arguments you may assume this properties without
+  comment.  However, when proving elementary inequalities or anything
+  else that works straight from the definitions or other basic
+  properties, it is a good idea to make sure that it is clear what you
+  are using.  In particular, this sentence makes it clear how I am
+  using the hypothesis that $a,\,b$ are positive.   As part of a
+  longer argument, it would be acceptable to omit this sentence and
+  replace the line ``If we simplify and re-arrange terms...'' by
+  ``Since $a,\,b$ are positive, we can simplify and re-arrange terms
+  to get''.    The reader should never have to dig to find where you
+  use your hypotheses:  make it clear!}
+
+\item A game consists of a chessboard with dimensions $2^n \times 2^n$
+  and an unlimited number of $L$-shaped tiles. Each $L$-shaped tile is
+  congruent to the letter $L$ as formed by three squares on the
+  chessboard, so each tile will precisely cover three such
+  squares. Prove that, for any positive integer $n$, the $2^n \times
+  2^n$ chessboard can be completely tiled (no tiles may overlap) with
+  the exception of one lone arbitrarily chosen square.
+
+\begin{proof}
+We will prove this by induction.  When $n=1$, the board is $2\times
+2$.  By rotating it, a single $L$-shaped tile can be placed to leave any
+one of the four squares open.
+
+Now suppose that for a fixed positive integer $n$, it is true that a
+$2^n\times 2^n$ chessboard can be covered with $L$-shaped tiles,
+leaving any arbitrarily chosen square open.    Now consider a
+$2^{n+1}\times 2^{n+1}$ chessboard, and pick any square on it.  This
+chessboard may be divided into four $2^n\times 2^n$ squares by
+bisecting each side.  Number these squares, starting in the upper
+right-hand corner and proceeding counter-clockwise, as $I$, $II$,
+$III$ and $IV$.   By rotating the board we may assume that the square
+designated above is in square $I$.  By our induction hypothesis, we
+may cover square $I$ with $L$-shaped tiles leaving this one square
+uncovered.     Again by our induction hypothesis, we can cover square
+$II$ so that its lower right-hand corner is uncovered; we can cover
+square $III$ so that its upper right-hand corner is uncovered; and
+cover square $IV$ so that its upper left-hand corner is uncovered.
+Finally, these three uncovered squares are adjacent and form an
+$L$-shape, so we can cover it with one additional tile.  
+
+Thus we have shown that we can cover a $2^{n+1}\times 2^{n+1}$ board
+with $L$-shaped tiles.  Therefore, by induction, it is possible to do
+this for all positive integers $n$.
+\end{proof} 
+
+\comment{In any proof that is not a direct proof, always tell your
+  reader at some point how the proof will go.  In an induction proof,
+  it is customary to use the same variable name as a variable
+  representing all positive integers and the fixed value in the
+  induction step.  Note that I wrote ``for a fixed positive integer
+  $n$'' to signal that $n$ now had a definite value, and then at the
+  end of the proof I wrote that the result holds for ``all positive
+  integers $n$'' to signal I was referring to all possible values.
+  If you prefer, you can use a different variable in the induction
+  step.   It is also customary to conclude the proof by simply saying
+  ``by induction'' rather than the more formal ``by the principle of
+  mathematical induction.''   Similarly, the last sentence can be
+  stated more formally.  This phrasing is as informal as it should
+  get, however.}
+
+
+\end{enumerate}
+
+\end{document}

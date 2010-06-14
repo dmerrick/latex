@@ -1,0 +1,196 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 7 \\
+Due:  Monday, April 19}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\item Use the definition of continuity to prove that $f : \mathbb{R} \rightarrow \mathbb{R}$, $f(x)=x^3+1$, is continuous everywhere.
+
+\begin{proof}
+Fix $\epsilon >0$ and $x\in\mathbb R$. We want to show that there exists a $\delta > 0$ such that for every $y \in\mathbb R$, if $|x-y| < \delta$, then $| f(x) - f(y) | < \epsilon$.
+
+Let $\delta = \min(1, \tfrac \epsilon {(2|y|+1)^2})$. Fix any $y\in\mathbb R$ such that $|x-y| < \delta$. Since $|x-y| < 1$, $|y| - |x| < 1$, and so $|y| < |x|+1$. Observe that:
+%
+\[ | f(x) - f(y) | = | x^3 + 1 - y^3 - 1 | = | (x-y) (x^2 + xy + y^2)| \]
+%
+and
+%
+\[ | (x-y) (x^2 + xy + y^2)| \le | (x-y) (x^2 + 2xy + y^2)| = | (x-y)(x+y)^2 | \]
+%
+and finally,
+%
+\[  | (x-y)(x+y)^2 | < |x-y| \cdot (2|y| +1)^2 < \tfrac \epsilon {(2|y|+1)^2}\cdot (2|y| +1)^2 = \epsilon. \]
+\end{proof}
+
+\item Use the definition of continuity to prove that $f : [0,\infty) \rightarrow \mathbb{R}$, $f(x)=\sqrt{x}$, is continuous for all $x\geq 0$.
+%
+%Hint:  treat the case $x=0$ separately.
+
+\begin{proof}
+Fix $\epsilon >0$ and $x \ge 0$. We want to show that there exists a $\delta > 0$ such that for every $y \in [0,\infty)$, if $|x-y| < \delta$, then $| \sqrt x - \sqrt y | < \epsilon$.
+
+We will proceed by cases.
+
+Case 1: $x=0$. Let $\delta = \epsilon^2$. Then if $|x-y| < \delta$,
+%
+\[ | \sqrt x - \sqrt y | = | \sqrt x - \sqrt y | \cdot \frac {\sqrt x + \sqrt y }{ \sqrt x + \sqrt y } = \frac {|x-y|}{ \sqrt x + \sqrt y},  \]
+%
+but since $x=0$, we have:
+%
+\[ \frac {|x-y|}{ \sqrt x + \sqrt y} = \frac y {\sqrt y} = \sqrt y, \]
+%
+and
+%
+\[ \sqrt y < \sqrt \delta = \sqrt{\epsilon^2} = \epsilon. \]
+
+Case 2: $x > 0$. Let $\delta = \epsilon\cdot\sqrt x$. Then if $|x-y| < \delta$,
+%
+\[ | \sqrt x - \sqrt y | = | \sqrt x - \sqrt y | \cdot \frac {\sqrt x + \sqrt y }{ \sqrt x + \sqrt y } = \frac {|x-y|}{ \sqrt x + \sqrt y}, \]
+%
+and we have that
+%
+\[ \frac {|x-y|}{ \sqrt x + \sqrt y} \le \frac{|x-y|}{\sqrt x}, \]
+%
+and
+%
+\[ \frac{|x-y|}{\sqrt x} < \frac \delta {\sqrt x} = \frac {\epsilon\sqrt x}{\sqrt x} = \epsilon. \]
+\end{proof}
+
+\addtocounter{enumi}{1}
+
+%\item Prove, using the definition and the previous problem that if $g : \mathbb{R} \rightarrow \mathbb{R}$ is continuous everywhere and $g(x)\geq 0$ for all $x$, then $G : \mathbb{R} \rightarrow \mathbb{R}$, $G(x)=\sqrt{g(x)}$ is continuous everywhere.
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+\item Given a function $f : D \rightarrow \mathbb{R}$, suppose $\displaystyle \lim_{x\rightarrow a} f(x) = L$.  Prove the following lemmas:
+
+\begin{enumerate}
+\item There exists $\delta >0$ such that for all for all $x\in D$, $0<|x-a|<\delta$, $|f(x)|<|L|+1$.   
+
+\begin{proof}
+Fix $x \in D$. Let $\epsilon=1$. By the definition of a limit, there exists a $\delta$ such that if $0 < | x - a | < \delta$, then $| f(x) - L| < 1$. Since $| f(x) - L | < 1$, we have that $L - 1 < f(x) < L+1$, so therefore $| f(x)| \le \max( |L-1|, |L+1|)$.
+
+Hence, if $| f(x)-L| < 1$, then $| f(x) | < |L| +1$.
+\end{proof}
+
+%\item If $L\neq 0$, there exists $\delta>0$ such that for all $x\in D$, $0<|x-a|<\delta$, $|f(x)|>|L|/2$. 
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+\end{enumerate}
+
+\item Given functions $f,\, g : D \rightarrow \mathbb{R}$ such that
+%
+\[ \lim_{x\rightarrow a} f(x) = L  \quad \text{and} \quad \lim_{x\rightarrow a} g(x) = M, \]
+%
+Prove the following:
+
+\begin{enumerate}
+
+\item $\displaystyle \lim_{x\rightarrow a} (fg)(x) = LM$.
+
+\begin{proof}
+Fix $\epsilon > 0$. We want to find a $\delta >0$ such that for all $x\in D$, if $0<|x-a|<\delta$, then $| f(x) \cdot g(x) - LM| < \epsilon$. By problem (4a), there exists a $\delta_0>0$ such that if $0<|x-a|<\delta_0$, then $f(x) \le |L|+1$.
+
+Let $\epsilon_0 = \tfrac \epsilon {2 |L|} > 0$. Then there exists a $\delta_1>0$ where if $0<|x-a|<\delta_1$, then $|f(x) - L| < \tfrac \epsilon {2 |M|}$. Similarly there exists a $\delta_2>0$ where if $0<|x-a|<\delta_2$, then $|g(x) - M| < \tfrac \epsilon {2 (|L|+1)}$. Let $\delta = min( \delta_0, \delta_1, \delta_2)$, then if $0< |x-a| < \delta$, then $|f(x)| \le |L|+1$ and $| f(x) - L| < \tfrac \epsilon {2 |L|}$ and $| g(x) - M| < \tfrac \epsilon {2(|L|+1)}$.
+
+Observe that
+%
+\[ | f(x) \cdot g(x) - LM | = | f(x) \cdot g(x) - f(x)M + f(x)M - LM |. \]
+%
+By the triangle inequality,
+%
+\[  | f(x) \cdot g(x) - LM | \le  f(x) \cdot g(x) - f(x)M| + |f(x)M - LM| \]
+%
+or
+%
+\[  | f(x) \cdot g(x) - LM | \le  |f(x)| \cdot |g(x) - M| + |M| \cdot |f(x) - L|. \]
+But now we can say:
+%
+\[ |f(x)| \cdot |g(x) - M| + |M| \cdot |f(x) - L| < (|L|+1) \frac \epsilon {2(|L|+1)} + |M| \frac \epsilon {2|M|}, \]
+%
+and
+%
+\[ (|L|+1) \frac \epsilon {2(|L|+1)} + |M| \frac \epsilon {2|M|} = \epsilon. \]
+\end{proof}
+
+%\item If $L\neq 0$, there exists $\gamma>0$ such that $\frac{f}{g}$ is defined on $B_\gamma^0(a)$ and 
+%$\displaystyle \lim_{x\rightarrow a}\frac{f}{g}(x) = \frac{L}{M}$. 
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+  \end{enumerate}
+
+%\item Use the definition of the limit to prove that
+%%
+%\[ \lim_{x\rightarrow 4} \frac{\sqrt{x}-2}{x-4} = \frac{1}{4}. \]
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+
+%\item (Extra Credit) Prove that for any $n\in \mathbb{N}$, $ f : [0,\infty) \rightarrow \mathbb{R}$, $f(x)=x^{1/n}$ is continuous everywhere.
+%
+%Hint:  Use the identity 
+%%
+%\[ a^n - b^n  = (a-b)\sum_{k=0}^{n-1} a^kb^{n-1-k}. \]
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+%
+%\item (Extra Credit) Prove that the function $Q : \mathbb{R} \rightarrow \mathbb{R}$,
+%%
+%\[ Q(x) =  \begin{cases}
+%0 & x \in \mathbb{R}\setminus \mathbb{Q} \\
+%1/q & x= p/q, \; p,\,q \in \mathbb{Z}, \, p\neq 0, \, q>0, \,(p,q)=1 \\
+%1 & x = 0,
+%\end{cases}
+%\]
+%%
+%is continuous at each irrational $x$ and discontinuous at each rational $x$.
+%
+%Hint:  The proof for $x$ rational is sketched in the notes.  For $x$ irrational, fix $\epsilon>0$, and choose $N$ such that $N^{-1} < \epsilon$.  Show that if we let
+%%
+%\[ \delta = \inf\{ |x-p/k| : p \in \mathbb{Z}, k\in \mathbb{N}, k\leq N \}, \]
+%%
+%then $\delta >0$, and for any $y\in \mathbb{Q}$ such that $|x-y|<\delta$, $|Q(x)-Q(y)|<\epsilon$. 
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+
+\end{enumerate}
+
+
+
+\end{document}

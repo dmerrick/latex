@@ -1,0 +1,91 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 3 Resubmission \\
+Due:  Friday, March 12}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\addtocounter{enumi}{2}
+
+
+\item Show that if $0<r<1$, then for any $\epsilon>0$, there exists $n\in \mathbb{N}$ such that $r^n<\epsilon$.  
+
+Hint:  show that you can write $r^{-1}= 1+s$ for some $s>0$, and then show $(1+s)^n$ can be made arbitrarily large using Bernoulli's inequality.  (Be precise about what arbitrarily large means!)
+\begin{proof}
+Fix $\epsilon >0$. Let $r\in\mathbb R$ such that $0<r<1$. We want to show there exists $n\in \mathbb{N}$ such that $r^n<\epsilon$.
+
+First we will take a look at $\frac 1 r$. Since $0<r<1$, $\frac 1 r > 1$. Hence, we can write $\frac 1 r = r^{-1} = 1+s$ for some $s>0$. If we raise both sides of the equation by $n$, we get:
+\[ \left(\frac 1 r \right)^n = r^{-n} = (1+s)^n. \]
+By Bernoulli's inequality:
+\begin{align*}
+r^{-n} &= (1+s)^n \\
+&\ge 1+ns.
+\end{align*}
+In other words,
+\[ 
+r^n \le \frac 1 {1+ns}
+\]
+Through the Archimedian property, we know that as there exists an $n\in\mathbb N$ such that $1+ns>x$ for any $x\in\mathbb R$. Therefore we can find a sufficiently large $n$ such that $\frac 1 {1+ns}<\frac 1 x$ for any $x$. Thus, there exists some $n$ such that:
+\[ \frac 1 {1+ns} < \epsilon \]
+Putting all of this together, for any large enough $n\in\mathbb N$, we get:
+\begin{align*}
+r^n &\le \frac 1 {1+ns} < \epsilon \\
+r^n &< \epsilon.
+\end{align*}
+\end{proof}
+
+\addtocounter{enumi}{1}
+
+\item Show that the set 
+%
+\[ E = \left\{ \frac{2n}{n+1} : n \in \mathbb{N}\right\} \]
+%
+has an open cover that does not contain a finite subcover.  Show that any open cover of the set $F=E\cup \{\sup E\}$ has a finite subcover.
+\begin{proof}
+Let $G_n = (0, 2-\frac 1 n)$. I claim $\{G_n\}_{n\in\mathbb N}$ where $n\ge 1$, is an open cover of $E$ which has no finite subcover.
+
+In order for $\{G_n\}_{n\in\mathbb N}$ to be an open cover, it must be true that:
+\begin{align*}
+E &\subset \bigcup_{n\in\mathbb N} G_n = \left(0,2-\frac 1 1\right)\cup\left(0,2-\frac 1 2\right)\cup\left(0,2-\frac 1 3\right)\cup\ldots \\
+E &\subset \left(0,0\right)\cup\left(0,\frac 2 3\right)\cup\left(0,\frac 1 2\right)\cup\ldots
+\end{align*}
+Fix any $x\in E$. Since every $n\in\mathbb N$ is positive, $x>0$. Since $x>0$, there exists $n\in\mathbb N$ such that $0<x<2-\frac 1 n$. In other words, $x\in(0,2-\frac 1 n) = G_n$.
+
+To show there is no finite subcover, we will proceed by contradiction. Suppose on the contrary that there is a finite subcover. In other words, there exists an $n_1, n_2, \ldots, n_k\in\mathbb N, n_1<n_2<\ldots<n_k$ such that:
+\[ E \subset \bigcup_{i=1}^k G_{n_i} \]
+If $x\in G_{n_i}$, then $x>0$ and $x<2-\frac 1 {n_i} < 2-\frac 1 {n_k}$. But there exists an $x\in E$ such that $x>2-\frac 1 {n_k}$, which is a contradiction.
+
+\bigskip
+
+Let $F = E\cup \{\sup E\}$, and $A=\{G_a : a \in B\}$ be an open cover of $F$. 
+
+Since $\sup E\in F$, there exists an $\alpha\in A$ such that $\sup E \in G_\alpha$ where $G_\alpha=(x_\alpha,y_\alpha), x_\alpha < \sup E < y_\alpha$. %Therefore there exists an $N\in\mathbb N$ such that if $n\in\mathbb N$ and $n>N$, $\frac 1 n < y_\alpha$.
+
+For each $i\in\mathbb N$, $1\le i < N$, there exists an $\alpha_i\in A$ such that $\frac 1 i \in G_{\alpha_i}$. Now we have:
+\[ F \subset (G_\alpha \cup G_{\alpha_1} \cup G_{\alpha_2} \cup \ldots \cup G_{\alpha_{2N-1}}) \]
+So $\{G_\alpha : \alpha\in B \}$ contains a finite subcover.
+\end{proof}
+
+\end{enumerate} 
+
+\end{document}

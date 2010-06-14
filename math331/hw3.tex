@@ -1,0 +1,163 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 3 \\
+Due:  Wednesday, February 17}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\item Define the set
+%
+\[ E = \left\{ \frac{n}{n^2+1} : n \in \mathbb{N}\right\}. \]
+%
+Find $\inf E$.
+\begin{proof}
+Assuming we're using the $\mathbb N = \{0,1,2,3,\ldots\}$, the first few elements of the set look like this:
+\[ E = \left\{ \frac{0}{0^2+1}, \frac{1}{1^2+1}, \frac{2}{2^2+1}, \ldots\right\} = 
+\left\{0, \frac 1 2, \frac 2 5,\ldots\right\} \]
+I claim $\inf E = 0$. In order for this to be true we need to satisfy two properties: that $0$ is a lower bound of $E$, and that given any other lower bound $x\in E$, $x\le\inf E$. Since $\mathbb N$ is made up of positive numbers, every element of $E$ will be positive. Therefore $0$ is a lower bound of $E$.
+
+To show that $0$ is the greatest lower bound of $E$, we will proceed by contradiction. Assume that there is another lower bound of $E$, call it $y$, such that $y>0$. I claim we have already reached a contradiction, because if $\inf E = y > 0$, then $y$ is not a lower bound because $0\in E$. 
+
+Therefore $0$ must be the greatest lower bound of $E$.
+\end{proof}
+
+\item Prove that there exists $x\in \mathbb R$ such that $x^3=2$ and
+  show that $x$ is not a rational number.
+ 
+\begin{proof}
+First we will show that there exists $x\in \mathbb R$ such that $x^3=2$. Define the set:
+\[ E =  \{ y \in \mathbb R : y>0, y^3 < 2 \} \]
+Since $1^3 = 1 < 2$, we can say that $1\in E$, so $E\ne\emptyset$. Further, for all $y\in E$, $y^3 < 2 < 8$, so $y < 2$. Therefore $E$ is bounded above, and by the Completeness Axiom, $\sup E$ exists.
+
+Let $x=\sup E$. We claim $x^3 = 2$. We will proceed by contradiction. Suppose $x^3\ne 2$, then either $x^3 < 2$ or $x^3 > 2$.
+
+\bigskip
+
+$x^3 < 2$: Let $\delta = 2-x^3 > 0$. Since $1\in E$, $x$ is an upper bound, so $x\ge 1$. Here $\delta \le 1$. Now consider the value $x+\frac{\delta}{20} > x$. We have the following:
+\[
+\left(x+\frac{\delta}{20}\right)^3 = 
+x^3 + \frac{3}{20} x^2 \delta + \frac{3}{400}x \delta^2 + \frac{1}{8000}\delta^3
+\]
+Since $\delta \le 1$,
+\[ \frac{1}{8000}\delta^3 < \frac 3 {400} \delta^2 < \frac 3 {20} \delta < x^3 + \frac{3}{20} x^2 \delta + \frac{3}{400}x \delta^2 < x^3 + \delta = 2\]
+Hence $x+\frac{\delta}{20}\in E$, contradicting the fact that $x$ is an upper bound.
+
+\bigskip
+
+$x^3 > 2$: Let $\epsilon = x^3-2 > 0$. Consider the value $x-\frac{\epsilon}{20}$. Since $x\le 2$, we have the following:
+\begin{align*}
+\left(x-\frac{\epsilon}{20}\right)^3 &= 
+x^3 - \frac{3}{20} x^2 \epsilon + \frac{3}{400}x \epsilon^2 - \frac{1}{8000}\epsilon^3 \\
+&> x^3 - \frac{3}{20} x^2 \epsilon + \frac{3}{400}x \epsilon^2 \\
+&\ge x^3 - \frac{3}{20} x^2 \epsilon + \frac{3}{400} \epsilon^2 \\
+&\ge x^3 - \frac{3}{20} \epsilon \\
+&> x^3 - \epsilon = 2
+\end{align*}
+Now take any $y\in E$. Then $y^3<2<\left(x-\frac{\epsilon}{20}\right)^3$ and so $y<x-\frac{\epsilon}{20}$. Therefore $x-\frac{\epsilon}{20}<x$ is an upper bound of $E$, contradicting the fact that $x$ is the least upper bound.
+
+Therefore in either case we set a contradiction and so we must have that $x^3=2$.
+
+\bigskip
+
+To show that $\sqrt[3] 2$ is irrational, we will proceed by contradiction. Suppose that $\sqrt[3] 2$ is rational, then there exists $a,b \in\mathbb N$ such that $\sqrt[3] 2 = \frac{a}{b}$. Without loss of generality, we can assume that $a$ and $b$ have no common factor. If we cube both sides we get:
+\begin{align*}
+\left(\sqrt[3] 2\right)^3 &= \left(\frac{a}{b}\right)^3 \\
+2 &= \frac{a^3}{b^3}
+\end{align*}
+After bringing the $b^3$ term to the left side we get:
+\[ 2 b^3 = a^3 \]
+So we now know that $2|a^3$. Since $2$ is prime, $2|a$. Let $a=2c$ for some $c\in\mathbb N$ Then:
+\[ 2b^3 = (2c)^3 = 8c^3 \]
+In other words, $b^3 = 4c^3$. But now we have that $2|b^3$, which implies $2|b$, which is a contradiction because $a$ and $b$ have no common factor. Therefore our original supposition is false, and $\sqrt[3] 2$ is irrational.
+\end{proof}
+
+\item Show that if $0<r<1$, then for any $\epsilon>0$, there exists $n\in \mathbb{N}$ such that $r^n<\epsilon$.  
+
+Hint:  show that you can write $r^{-1}= 1+s$ for some $s>0$, and then show $(1+s)^n$ can be made arbitrarily large using Bernoulli's inequality.  (Be precise about what arbitrarily large means!)
+\begin{proof}
+Let $r,\epsilon\in\mathbb R$ such that $0<r<1$ and fix $\epsilon > 0$. We want to show there exists $n\in \mathbb{N}$ such that $r^n<\epsilon$.
+
+First we will take a look at $\frac 1 r$. Notice that since $0<r<1$, $\frac 1 r > 1$. Hence, we can write $\frac 1 r = r^{-1} = 1+s$ for some $s>0$. If we raise both sides of the equation by $n$, we get:
+\[ \left(\frac 1 r \right)^n = r^{-n} = (1+s)^n \]
+Invoking Bernoulli's inequality, we get:
+\begin{align*}
+r^{-n} &= (1+s)^n \\
+&\ge 1+ns
+\end{align*}
+In other words:
+\[ 
+r^n \le \frac 1 {1+ns}
+\]
+Through the Archimedian property, we know that as $n$ grows to be arbitrarily large, the $\frac 1 {1+ns}$ term will become arbitrarily small. Therefore, there exists some $n$ such that:
+\[ \frac 1 {1+ns} < \epsilon \]
+Putting all of this together, for some arbitrarily large $n\in\mathbb N$, we get:
+\begin{align*}
+r^n &\le \frac 1 {1+ns} < \epsilon \\
+r^n &< \epsilon
+\end{align*}
+\end{proof}
+
+\item Given an example to show that the nested interval property need
+  not hold if the intervals are open.  Explain where  the proof of the
+  nested interval property breaks down if you assume the intervals are open.
+\begin{proof}
+First, a counterexample. For each $n\in\mathbb N$, let $I_n = (0, \frac 1 n)$. Then $\{I_n\}_{n=1}^\infty$ is a nested sequence of open intervals. Consider some $x\in\mathbb R$. If $x\in I_n$, then $ 0 < x < \frac 1 n$. If we look at some $m\in\mathbb R$ such that $m > \frac 1 x$, then $0 < \frac 1 m < x$. This means that $x\not\in I_m$ if $m > \frac 1 x$. Therefore, there is no $x\in\mathbb R$ that belongs to every $I_n$, so the intersection of every $I_n$ is empty. 
+
+Notice that if we had defined $I_n$ to be closed, then $0$ would be an element of every $I_n$, and their intersection would be $\{0\}$.
+
+The proof of the nested interval property breaks down with open intervals because it works with increasingly smaller intervals. Eventually you will be left with a situation where you have $[x,x]$ for some $x\in\mathbb R$, which works fine because $[x,x]$ is not empty. Conversely, the open interval $(x,x)$ is empty, and this is the reason the property fails for open intervals.
+\end{proof}
+
+\item Show that the set 
+%
+\[ E = \left\{ \frac{2n}{n+1} : n \in \mathbb{N}\right\} \]
+%
+has an open cover that does not contain a finite subcover.  Show that any open cover of the set $F=E\cup \{\sup E\}$ has a finite subcover.
+\begin{proof}
+Let $G_n = (0, 1-\frac 1 n)$. I claim $\{G_n\}_{n\in\mathbb N}$ where $n\ge 1$, is an open cover of $E$ which has no finite subcover.
+
+In order for $\{G_n\}_{n\in\mathbb N}$ to be an open cover, it must be true that:
+\begin{align*}
+E &\subset \bigcup_{n\in\mathbb N} G_n = \left(0,1-\frac 1 1\right)\cup\left(0,1-\frac 1 2\right)\cup\left(0,1-\frac 1 3\right)\cup\ldots \\
+E &\subset \left(0,0\right)\cup\left(0,\frac 1 2\right)\cup\left(0,\frac 2 3\right)\cup\ldots
+\end{align*}
+Fix any $x\in E$. Since every $n\in\mathbb N$ is positive, $x>0$. Since $x>0$, there exists $n\in\mathbb N$ such that $0<x<1-\frac 1 n$. In other words, $x\in(0,1-\frac 1 n) = G_n$.
+
+To show there is no finite subcover, we will proceed by contradiction. Suppose on the contrary that there is a finite subcover. In other words, there exists an $n_1, n_2, \ldots, n_k\in\mathbb N, n_1<n_2<\ldots<n_k$ such that:
+\[ E \subset \bigcup_{i=1}^k G_{n_i} \]
+If $x\in G_{n_i}$, then $x>0$ and $x<1-\frac 1 {n_i} < 1-\frac 1 {n_k}$. But there exists an $x\in E$ such that $x>1-\frac 1 {n_k}$, which is a contradiction.
+
+\bigskip
+
+Let $F = E\cup \{\sup E\}$, and $A=\{G_a : a \in A\}$ be an open cover of $F$. By the definition of an open cover, some element in $A$ must contain $\sup E$, since $\sup E\in F$.
+
+Since $\sup E\in F$, there exists an $\alpha\in A$ such that $\sup E \in G_\alpha$ where $G_\alpha=(x_\alpha,y_\alpha), x_\alpha < \sup E < y_\alpha$. Therefore there exists an $N\in\mathbb N$ such that if $n\in\mathbb N$ and $n>N$, $\frac 1 n < y_\alpha$.
+
+For each $i\in\mathbb N$, $1\le i < N$, there exists an $\alpha_i\in A$ such that $\frac 1 i \in G_{\alpha_i}$. Now we have:
+\[ F \subset (G_\alpha \cup G_{\alpha_1} \cup G_{\alpha_2} \cup \ldots \cup G_{\alpha_{2N-1}}) \]
+So $\{G_\alpha : \alpha\in A \}$ contains a finite subcover.
+\end{proof}
+
+\end{enumerate} 
+
+\end{document}

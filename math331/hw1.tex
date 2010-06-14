@@ -1,0 +1,130 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 1 \\
+Due:  Wednesday, February 3}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+\renewcommand{\itemsep}{6pt}
+\item Given sets $A$ and $B$, prove that $A\cap B = A$ if and only if
+  $A\subset B$. 
+  
+\begin{proof}
+Suppose $A\subset B$. Then for every $a\in A, a\in B$. Given $x\in A\cap B, x\in A$ and $x\in B$. Therefore for any $x\in A\cap B, x\in A$. On the other hand, given an $x\in A$, since $A\subset B$, then $x\in B$ as well, so $x\in A\cap B$. Thus, $A\cap B = A$ if $A\subset B$.
+
+Conversely, suppose $A\cap B = A$. We want to show that $A\subset B$. Let $x\in A\cap B$, then $x\in A$ and $x\in B$ by the definition of intersection. Because $A\cap B = A$, then either $A\subset B$ or $B = \emptyset$. If $B = \emptyset$ then $A\cap B = \emptyset$, which is a contradiction because we know $x\in A\cap B$. On the other hand, let $x\in A$. Since $A\cap B = A$, then $x\in A\cap B$ as well, which implies that $x\in A$ and $x\in B$. Hence for every $a\in A, a\in B$. Thus, $A\subset B$ if $A\cap B = A$.
+\end{proof}
+
+\item Prove that if $g$ is a function and $A$ and $B$ are sets
+  contained in the domain of $g$, then $g(A\cap B)\subset g(A)\cap
+  g(B)$. Give an example to prove that equality need not hold.
+  
+\begin{proof}
+Note that $g(A\cap B)$, the image of $A\cap B$ under $g$, is a set. By the definition of the image of a function,
+\[ g(A\cap B) = \{ g(x) : x \in (A\cap B) \} \]
+Let $c$ be an element in the domain of $g$ such that $g(c)\in g(A\cap B)$. By the definition of the image of $g$, $c\in (A\cap B)$. This means that $c\in A$ as well as $c\in B$, by the definition of intersection. Hence, $g(c)$ must be an element of both $g(A)$ and $g(B)$, so $g(c)\in g(A)\cap g(B)$.
+\end{proof}
+
+\item Prove that for all natural numbers $n$,
+%
+\[ \sum_{k=1}^n k = \frac{n(n+1)}{2}. \]
+  
+\begin{proof}
+Instead of using induction, we will prove this using Gauss' method of pairing numbers. Fix $n\in \mathbb N$. We will begin by choosing a name for the left side of the equation:
+\[ x = \sum_{k=1}^n k = 1 + 2 + \ldots + (n-1) + n \]
+First, we will multiply $x$ by 2:
+\begin{align*}
+ 2x& = 2[1 + 2 + \ldots + (n-1) + n] \\
+ 2x& = [1 + 2 + \ldots + (n-1) + n] + [1 + 2 + \ldots + (n-1) + n]
+\end{align*}
+Notice that we can reverse the second sum, and pair it off with a summand from the first sum:
+\begin{equation*}
+\begin{split}
+ 2x& = [1 + 2 + \ldots + (n-1) + n] + [1 + 2 + \ldots + (n-1) + n] \\
+ & = [1 + 2 + \ldots + (n-1) + n] + [n + (n-1) + \ldots + 2 + 1] \\
+ & = [1 + 2 + \ldots + (n-1) + n] \\
+ & \quad\,\, [n + (n-1) + \ldots + 2 + 1] \\
+ & = (1+n) + [2+(n-1)] + \ldots + [(n-1)+2] + (n+1) \\
+ & = (n+1) + (n+1) + \ldots + (n+1) + (n+1)
+\end{split}
+\end{equation*}
+Here we have $n$ copies of $(n+1)$, so:
+\[ 2x = n(n+1) \]
+Solving the equation for $x$ and substituting back in $\sum_{k=1}^n k$ gets us:
+\begin{align*}
+x & = {{n(n+1)}\over{2}} \\
+{\sum_{k=1}^n k} & = {n(n+1)\over{2}}
+\end{align*}
+\end{proof}
+
+\item  Prove that for $n\in \mathbb N$, $2^{n-1} \leq n!$.
+  
+\begin{proof}
+We will prove this by induction. First we will show it's true when $n=1$.
+\[ 2^{n-1} = 2^{1-1} = 2^0 = 1 = n! = 1 \]
+So the inequality holds when $n=1$. Now suppose the inequality is true for some fixed $n\in \mathbb N$. Then we want to show $2^{(n+1)-1} = 2^n \leq (n+1)!$. By our induction hypothesis:
+\[ 2^{n-1}\cdot (n+1) \leq n!\cdot (n+1) \]
+Further, for all $n\in \mathbb N$, $2 \leq n+1$. Multiplying this by the inequality in our inductive hypothesis gives us:
+\[ 2(2^{n-1}) \leq 2^{n-1} \cdot (n+1) \]
+Note that $2(2^{n-1}) = 2^{n-1} + 2^{n-1} = 2^n$. So we have:
+\begin{align*}
+2^n& \leq 2^{n-1} \cdot (n+1) \leq n!\cdot (n+1) \\
+2^n& \leq n!\cdot (n+1) \\
+2^n& \leq (n+1)!
+\end{align*}
+Therefore, by induction, the inequality holds for all natural numbers $n$.
+%This can be simplified as:
+% \[ 2^n \leq n! \cdot (n+1) \]
+\end{proof}
+
+\item Prove that given any natural number $n\geq 8$, there exist
+  non-negative integers $j$ and $k$ such that $n=3j+5k$. 
+
+Hint:  If you use induction, choose your base case carefully.
+  
+\begin{proof}
+We will prove this by induction. Note that the Principle of Mathematical Induction does not {\it require} that the base case begins on $1$, so we can just as easily start with a different number for this problem.
+
+First we will show the equality holds for $n=8$. When $n=8$, $j$ and $k$ can both equal $1$, so:
+\[ 3j + 5k = 3(1) + 5(1) = 3 + 5 = 8\]
+Now suppose the equality is true for some fixed $n\in \mathbb N$, where $n > 8$. We want to show that $n+1 = 3j' + 5k'$ for some non-negative $j',k'\in \mathbb Z$.
+
+Consider $j$ and $k$ from the inductive hypothesis. We will proceed by cases:
+
+Case 1: $k \ne 0$. Since at least one $5$ is used in the summation, we can replace this $5$ with two 3's to make it equal $n+1$. In other words, set $k' = k-1$ and $j' = j+2$ and you will get:
+\begin{align*}
+3j' + 5k'& = 3(j+2) + 5(k-1) \\
+& = 3j + 6 + 5k - 5 \\
+& = 3j+5k +1\\
+& = n+1
+\end{align*}
+
+Case 2: $k = 0$. Since there are no 5's in $n$, then $n=3j$ for some non-negative $j\in \mathbb Z$. Because $n \geq 8$, there must be at least three 3's in $n$. If you replace these three 3's with two 5's, you will end up with $n+1$. In other words, set $j' = j-3$ and $k' = 2$ and you will get:
+\begin{align*}
+3j' + 5k'& = 3(j-3) + 5(2) \\
+& = 3j - 9 + 10 \\
+& = 3j +1\\
+& = n+1
+\end{align*}
+Hence, regardless of the value of $k$, you can find a non-negative $j',k'\in \mathbb Z$ such that $n+1 = 3j' + 5k'$. Therefore, by induction, the equality holds for all $n \geq 8$.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

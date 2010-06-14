@@ -1,0 +1,67 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 4 \\
+Due:  Friday, February 26}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\item Prove that for any natural number $N$, if $\{ I_1,I_2,\ldots,I_N\}$
+  is a finite collection of of closed intervals, then the set
+%
+\[ E = \bigcup_{n=1}^N I_n \]
+%
+is compact:  i.e., every open cover of $E$ has a finite subcover.
+
+Hint:  use induction, the Heine-Borel theorem, and the proof of the
+Heine-Borel theorem.
+
+\begin{proof}
+First we will show that every $I_n$ is both closed and bounded. Each $I_n$ is closed by their definition, and bounded by the fact that they are closed.
+
+%Let U be the set of all of the upper bounds of the $I_n$s, and L be the set containing all of the lower bounds of the $I_n$s. Then $\sup U$ is an upper bound for the set of $I_n$s, and $\inf L$ is a lower bound for the set of $I_n$s.
+
+We will proceed by induction on $N$. As a base case, if $N=2$, then we're working with the set $I_1\cup I_2$. Let $O$ be an open cover of this set. Then $O$ must cover both $I_1$ and $I_2$. Since every $I_n$ is closed and bounded, by the Heine-Borel theorem both $I_1$ and $I_2$ are compact, there must be a finite subcover of each. Let $S_1$ be the finite subcover of $I_1$, and $S_2$ be the finite subcover of $I_2$. Then $S_1\cup S_2$ is finite and covers $I_1\cup I_2$.
+
+Assume that the set
+\[ A = \bigcup_{n=1}^k I_n \]
+is compact for some integer $k$. In other words, every open cover of $A$ has a finite subcover. We want to show that every open cover of the set
+\[ B = \bigcup_{n=1}^{k+1} I_n = A \cup I_{k+1} \]
+also has a finite subcover.
+
+Let $O_B$ be an open cover of $B$. Then $O_B$ must cover both $A$ and $I_{k+1}$. By our inductive hypothesis, every open cover of the set $A$ contains a finite subcover. Since $I_{k+1}$ is both closed and bounded, by the Heine-Borel theorem every open cover of it contains a finite subcover. Let $S$ be the union of the finite subcover of the cover $O_B$ for the sets $A$ and $I_{k+1}$. Since both subcovers are finite and cover $A \cup I_{k+1}$, then the set $B$ must be compact.
+
+\end{proof}
+
+\item Construct a counter-example to show that previous result is not true if $E$ is the union
+  of a countable set of closed intervals $\{I_n : n \in \mathbb N \}$.  
+
+\begin{proof}
+Define $I_n$ as $[-n,n]$. Then each $I_n$ is closed but
+\[ E = \bigcup_{n\in\mathbb N} I_n \]
+is unbounded. Hence, by the Heine-Borel theorem, $E$ is not compact.
+\end{proof}
+
+\end{enumerate}
+
+
+\end{document}

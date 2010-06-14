@@ -1,0 +1,276 @@
+\documentclass[12pt]{amsart}
+
+\newcommand{\comment}[1]{\vskip.3cm
+\fbox{%
+\parbox{0.93\linewidth}{\footnotesize #1}}
+\vskip.3cm}
+
+
+\begin{document}
+
+\begin{center}
+{\bf Math 331 --- Take Home Midterm \\
+Due Friday, April 9, in Class}
+\end{center}
+
+\bigskip
+
+%{\bf Instructions:}  
+%\begin{enumerate}
+%
+%\item Do as many problems as you can.  To receive a passing grade you do not have to do all the problems, and it is better to do good work on some problems than crappy work on all the problems.  
+%
+%\item Work on this exam alone.  You may use your class notes, but no other references, printed, electronic, or sentient.
+%
+%\item Do not discuss this exam with anyone else in class.  If a conversation proceeds beyond the exchange ``{\em How's the exam?}''  ``{\em Really hard!}'' you must immediately flee the scene.
+%
+%\item If you want to use a result from class or from the homework, simply cite it as such:  e.g., say, ``{\em By a theorem proved in class}'' or ``{\em By a problem in the homework}''.
+%
+%\item I will answer questions about your lecture notes and material covered in class, but I will not provide additional hints beyond those given below.  
+%
+%\item Create a new \LaTeX\  file for your exam; include only the statement and number of the problems that you do; do not include problems you do not do or any of the hints.  To renumber the problems so that they match the numbers that you use, use the {\tt \textbackslash item[\ldots]} command option.  For example, if you do problem 3(a), beging the problem with {\tt \textbackslash item[3(a)]}.  Put your name in the upper left-hand corner of the first page.
+%
+%\item Copy the following statement from the \LaTeX\  file and put it on the front page of your exam, signing your name in the space provided.
+%\end{enumerate}
+
+\bigskip
+
+\fbox{%
+\parbox{0.93\linewidth}{\footnotesize  I affirm that I have read the instructions given with the exam, have had all questions about them answered, and that I have followed these instructions while working on the exam.   
+
+\vspace{0.5in}
+
+Signature:  
+
+\vspace{0.5in}}}
+
+
+\vspace{0.3cm}
+
+%\end{enumerate}
+\bigskip
+\bigskip
+%\newpage
+%{\bf The Problems:}
+\begin{enumerate}
+
+\setlength{\itemsep}{8pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\item Prove the following result:  given a sequence $\{a_n\}_{n=1}^\infty$, suppose the subsequences $\{a_{2n}\}_{n=1}^\infty$ and $\{a_{2n-1}\}_{n=1}^\infty$ both converge to the same limit $L$. Prove that $a_n\rightarrow L$ as $n\rightarrow \infty$.
+%Hint:  use the definition and be careful with your quantifiers!
+\begin{proof}
+Fix $\epsilon > 0$. Since $a_{2n}\to L$ as $n\to\infty$, there exists an $N_e$ such that,
+%
+\[ | a_{2n} - L | < \epsilon \]
+%
+where $n>N_e$. Similarly, since $a_{2n-1}\to L$ as $n\to\infty$, there exists an $N_o$ such that,
+%
+\[ | a_{2n-1} - L | < \epsilon \]
+%
+where $n>N_o$.
+
+Now consider the supersequence $\{a_n\}_{n=1}^\infty$. We want to show that there exists some $N$ such that if $n>N$,
+%
+\[ | a_n - L | < \epsilon. \]
+%
+Let $N=\max (N_e, N_o)$. Select an arbitrary $n$ such that $n>N$. We will proceed by cases:
+
+First case -- where $n$ is even: If $n$ is even, then each $a_n$ belongs to the subsequence $\{a_{2n}\}_{n=1}^\infty$ where we have that:
+%
+\[ | a_n - L | < \epsilon. \]
+%
+
+Second case -- where $n$ is odd: Similarly, if $n$ is even, then every $a_n$ belongs to the subsequence $\{a_{2n-1}\}_{n=1}^\infty$ where we have that:
+%
+\[ | a_n - L | < \epsilon. \]
+%
+Hence, $\{a_n\}_{n=1}^\infty$ must converge to $L$.
+\end{proof}
+
+
+\item Prove that for any $r>1$ and any $k\in \mathbb{N}$, $\frac{n^k}{r^n} \rightarrow 0$ as $n\rightarrow \infty$.
+
+%Hint:  Fix $k$ and $r=1+s$, $s>0$.  Use the binomial theorem to show that for all $n>2k$, 
+%%
+%\[ (1+s)^n  \geq \binom{n}{k+1}s^k. \]
+%%
+%Combine this estimate with the Squeeze Lemma; be sure to use the fact that $n>2k$!   Note that the Squeeze Lemma remains true with the weaker hypothesis that there exists $N>0$ such that $a_n\leq b_n \leq c_n$ for all $n\geq N$.
+% 
+\begin{proof}
+Fix $k\in \mathbb{N}$ and let $r=1+s$, $s>0$. By the binomial theorem, we can approximate the value of $r^n$:
+%
+\begin{align*}
+r^n = (1+s)^n &\ge \binom{n}{k+1}s^k \\
+&= \frac{n(n-1)\ldots(n-k+1)}{k!}s^k.
+\end{align*}
+%
+If $n>2k$, then $k < \frac n 2$. Therefore we can observe the properties of the last term in the numerator,
+%
+\[ (n-k+1) > \frac n 2 + 1 > \frac n 2 \]
+%
+and it follows that:
+%
+\[ \frac{n(n-1)\ldots(n-k+1)}{k!} > \frac{n^k}{2^k}\cdot\frac 1 {k!}. \]
+%
+Hence, we have that:
+%
+\[ 0 \le \frac{n^k}{r^n} \le \left(\frac 1 {n^k}\right)\left(\frac{2^k k!}{s^k}\right). \]
+%
+Since:
+%
+\[ \left\{ \left(\frac 1 {n^k}\right)\left(\frac{2^k k!}{s^k}\right) \right\}_{n=1}^\infty = \left(\frac{2^k k!}{s^k}\right) \left\{\frac 1 {n^k} \right\}_{n=1}^\infty, \]
+%
+and $\frac 1 {n^k} \to 0$ as $n\to\infty$, it follows from the Squeeze Lemma that $\frac{n^k}{r^n} \to 0$ as $n\to \infty$.
+
+%Let $n = 2k+1$, then:
+%%
+%\begin{align*}
+%n - k &= n - \frac{n-1}{2} \\
+%&= \frac{n+1}{2} > \frac n 2.
+%\end{align*}
+%With this we can show:
+%\begin{align*}
+%r^n = (1+s)^n &\ge \binom{n}{k+1}s^k \\
+%&= \frac{n!}{(k+1)!(n-(k+1))!}s^k \\
+%&= \frac{n(n-1)(n-2)\ldots(n-k)}{(k+1)!}s^k \\
+%&\ge \frac{(\frac n 2)^{k+1}}{(k+1)!}s^k,
+%\end{align*}
+%since $n,(n-1),(n-2), \ldots, (n-k) < \tfrac n 2$.
+\end{proof}
+
+\item Prove one of the following convergence problems.
+
+\begin{enumerate}  
+
+\item Prove that if $\displaystyle \sum_{n=1}^\infty a_n$ converges and $a_n\geq 0$ for all $n$, then the series $\displaystyle \sum_{n=1}^\infty \frac{\sqrt{a_n}}{n}$ converges.
+%
+%Hint:  Use the Cauchy-Schwartz inequality to estimate the partial sums and the monotonic convergence theorem to prove convergence.
+\begin{proof}
+Since the terms of the series are non-negative, by the monotonic convergence theorem it suffices to show that the sequence of partial sums is bounded. 
+
+By the Cauchy-Schwarz inequality, we have the following:
+%
+\[ \left| \sum_{n=1}^N \frac{\sqrt{a_n}}{n} \right|^2 \le \sum_{n=1}^N |a_n| \cdot \sum_{n=1}^N \left|\frac 1 {n^2}\right|. \]
+%
+Since both $\sum_{n=1}^\infty a_n$ and $\sum_{n=1}^\infty \frac 1 {n^2}$ converge, their partial sums are bounded by some values $M,\, V$ respectively.
+
+Hence, the right side of the Cauchy-Schwarz inequality is bounded by the value $MV$, and the partial sums of $\sum_{n=1}^\infty \frac{\sqrt{a_n}}{n}$ are also bounded.
+\end{proof}
+
+%\item Show that the series $\displaystyle \sum_{n=1}^\infty \frac{r^n}{n}$ converges if $-1\leq r <1$ and diverges otherwise.  
+%
+%Hint:  consider the cases $|r|<1$, $r=-1$, $r=1$, and $|r|>1$ separately.  You will use different results for each case.  
+
+\end{enumerate}
+
+
+\item Prove one of the following convergence theorems.
+
+\begin{enumerate}
+
+%\item (The Root Test) Given a series $\displaystyle \sum_{n=1}^\infty a_n$, assume that for all $n\geq 1$, $a_n \geq 0$.  Show that if there exists $L$, $0<L<1$ such that $\sqrt[n]{a_n}=a_n^{1/n}\rightarrow L$ as $n\rightarrow \infty$, then the series converges.
+
+%Hint:  The proof of this is very similar to the proof of the ratio test:  show that you can apply the generalized comparison test for series, comparing the given series to a geometric series with ratio $r$ such that $L<r<1$.
+
+
+\item[(b)] (The Limit Comparison Test)  Given two series  $\displaystyle \sum_{n=1}^\infty a_n$ and  $\displaystyle \sum_{n=1}^\infty b_n$, suppose that $a_n,\,b_n >0$ for all $n$.  Prove that if  the sequence $\{a_n/b_n\}_{n=1}^\infty$ converges to a value $L$, $0<L<\infty$, then  $\displaystyle \sum_{n=1}^\infty a_n$ converges if and only if  $\displaystyle \sum_{n=1}^\infty b_n$ converges.
+
+%Hint:   Use the hypotheses to show that there exist values $K,\,M>0$ and $N>0$ such that for all $n\geq N$, 
+%%
+%$K < \frac{a_n}{b_n} < M$.
+%%
+%Then apply the generalized comparison test.
+
+\begin{proof}
+Suppose that $\frac{a_n}{b_n}\to L$ as $n\to\infty$, where $0 < L < \infty$. We can find some $K,\,M \in\mathbb R$ such that $0 < K < L < M < \infty$.
+
+Since $\frac{a_n}{b_n}\to L$ as $n\to\infty$, for a sufficiently large $n$ we know that  $\frac{a_n}{b_n}$ gets very close to $L$. By the definition of convergence, for all $\epsilon>0$ there exists an $N>0$ such that if $n>N$, we have:
+%
+\[ K < \frac{a_n}{b_n} < M. \]
+%
+From this we can get:
+%
+\[ K \cdot b_n < a_n < M \cdot b_n. \]
+%
+From this we will proceed by cases.\\
+
+First case -- the sequence $\sum_{n=1}^\infty b_n$ diverges: If $\sum_{n=1}^\infty b_n$ diverges, then so does $\sum_{n=1}^\infty K \cdot b_n$. Since $K \cdot b_n < a_n$ for all $n$ sufficiently large, by the generalized comparison test, $\sum_{n=1}^\infty a_n$ must also diverge. \\
+
+Second case -- the sequence $\sum_{n=1}^\infty b_n$ converges: Similarly, if $\sum_{n=1}^\infty b_n$ converges, so does the sequence $\sum_{n=1}^\infty M \cdot b_n$. Since $a_n < M \cdot b_n$ for all $n$ sufficiently large, by the generalized comparison test $\sum_{n=1}^\infty a_n$ must also converge.
+\end{proof}
+\end{enumerate}
+
+
+%\item Define a sequence $\{a_n\}_{n=1}^\infty$ recursively as follows:
+%%
+%\[  a_1 =1, \qquad a_{n+1} = 1 + \frac{1}{1+a_n}, \quad n\geq 1. \]
+%%
+%Prove that the sequence converges and determine its limit.
+%
+%Hint:  Show that for all $n\geq 1$
+%%
+%\[ |a_{n+1}-a_n | \leq 4^{-1}|a_n-a_{n-1}|. \]
+%%
+%Use induction to prove that 
+%%
+%\[ |a_{n+1}-a_n | \leq 4^{-n+1}|a_2-a_{1}|. \]
+%%
+%Use the triangle inequality to show that for all $m\geq n$
+%%
+%\[ |a_m-a_n| \leq \sum_{k=n}^{m-1} |a_{k+1}-a_k|. \]
+%%
+%Combine the previous two estimates and the Cauchy criterion for series and prove that the sequence $\{a_n\}_{n=1}^\infty$ is a Cauchy sequence and so converges.  Finally, given that the sequence converges to some value $L$, show that $L\geq 0$.  Now use the limit rules and the recursion relation to solve for $L$. 
+
+\addtocounter{enumi}{1}
+
+\item (Extra Credit) Prove that every real number $x\in [0,1]$ has a unique decimal expansion:  there exists a unique sequence $\{a_n\}_{n=1}^\infty$, $a_n\in \{ 0, 1, 2,\ldots, 9\}$, such that
+%
+\[ x = \sum_{n=1}^\infty \frac{a_n}{10^n}. \]
+%
+
+%Hint:  Construct the sequence $\{a_n\}_{n=1}^\infty$ via induction:  given values $a_1,\ldots,a_n$, choose $a_{n+1}$ to be the largest integer in the set $\{ 0, 1, 2,\ldots, 9\}$ such that
+%%
+%\[ \sum_{k=1}^{n+1} \frac{a_k}{10^k} \leq x.  \]
+%%
+%Show that partial sums of this series are bounded and increasing, and that $x$ is the supremum of the partial sums.  To show that the sequence is unique, show that given another sequence $\{b_n\}_{n=1}^\infty$, let $n_0$ be the first index such that $a_{n_0}\neq b_{n_0}$.  Show that if $a_{n_0}<b_{n_0}$, then 
+%%
+%\[ x< \sum_{n=1}^\infty \frac{b_n}{10^n}, \]
+%%
+%and that if $a_{n_0}>b_{n_0}$, the opposite inequality holds. 
+
+\begin{proof}
+Divide the interval $[0,1]$ into 10 equal subintervals (of length $\frac 1 {10}$), $\{ I_0, I_1, I_2, \ldots, I_9 \}$. We have the following:
+\begin{align*}
+I_0 &= \left[0, \frac 1 {10}\right] \\
+\vdots \\ 
+I_i &= \left[\frac i {10}, \frac {i+1} {10}\right] \\
+\vdots \\
+I_9 &= \left[\frac 9 {10}, 1\right]
+\end{align*}
+Select an $i$ such that $x \in I_i$ and let $a_1 = i$, then we have that:
+%
+\[ | x - a_1| < \frac 1 {10}. \]
+%
+Next, we will again divide the interval $I_{a_1}$ into 10 equal subintervals (of length $\frac 1 {100}$), $\{ I_0^1, I_1^1, I_2^1, \ldots, I_9^1 \}$. Then we have the following:
+%
+\[ I_i^1 = \left[\frac {a_1}{10} + \frac{i}{100}, \frac{a_1}{10} + \frac {i+1} {100}\right], \]
+%
+for $i\in \{ 0, 1, 2,\ldots, 9\}$. Again, select an $i$ such that $x \in I_i^1$ and let $a_2 = i$. Then we have that:
+%
+\[ \left| x - \left(\frac{a_1}{10} + \frac{a_2}{100}\right)\right| \le \frac 1 {100} \]
+%
+Moving forward inductively, we are constructing a unique sequence $\{ a_1, a_2, a_3, \ldots \}$ where $a_n\in \{ 0, 1, 2,\ldots, 9\}$, and such that we have:
+%
+\[ \left| x - \sum_{n=1}^j \frac{a_n}{10^n} \right| \le \frac 1 {10^j} \]
+%
+From which we get that:
+%
+\[ x = \sum_{n=1}^\infty \frac{a_n}{10^n}. \]
+%
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

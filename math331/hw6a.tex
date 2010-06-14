@@ -1,0 +1,98 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 6 \\
+Due:  Friday, March 19}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+
+\item Prove that if $\{a_n\}_{n=1}^\infty$ is a Cauchy
+  sequence, then it is bounded.
+
+Hint:  follow the proof that convergent sequences are bounded.
+
+\begin{proof}
+If $\{a_n\}_{n=1}^\infty$ is Cauchy, then for any $\epsilon >0$, there exists an $N>0$ such that for all $n,\,m \ge N$, $|a_n -a_m| < \epsilon$. If $\epsilon = 1$, there exists an $N_1$ such that for all $m,\,n > N_1$, $|a_n -a_m| < 1$.
+
+Using the triangle inequality, we know that for all $a,\,b,\,c\in\mathbb Z$, the following holds:
+\[ \big| |a - c| - |b-c| \big| \le |a - b|. \]
+Let $m = N_1 + 1$. By the triangle inequality, for any $n>N_1$, we have:
+\begin{align*}
+\big| |a_n - a_{N_1} | - |a_n - a_m | \big| \le |a_{N_1} - a_m |,
+\end{align*}
+But since $m = N_1 + 1$,
+\begin{align*}
+\big| |a_n - a_{N_1} | - |a_n - a_{(N_1 + 1)} | \big| &\le |a_{N_1} - a_{(N_1+1)} | \\
+&<1
+\end{align*}
+
+
+Therefore, $|a_n - a_{N_1}| < |a_n - a_{(N_1+1)}| + 1$, for all $n\ge N_1$.
+
+Let $M=\max\left(|a_{N_1}-a_1|, |a_{N_1}-a_2|, \ldots, |a_{N_1}-a_{N_1}|, |a_{N_1}-a_{(N_1+1)}|\right) + 1$.
+
+Then for all $n\in\mathbb N$, $|a_n - a_{N_1}| \le M$. Hence, $\{a_n\}_{n=1}^\infty$ is bounded by $M$.
+\end{proof}
+
+\item Prove that the series
+%
+$\displaystyle \sum_{n=1}^\infty \frac{1}{n(n+1)}$
+%
+converges and find its sum.
+
+\medskip
+
+\noindent Hint:  Use induction and the fact that $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$ 
+to find the partial sums.
+
+\begin{proof}
+Let $\{S_N\}_{n=1}^\infty$ be the series of partial sums where $S_N = \sum_{n=1}^N  \frac{1}{n(n+1)}$. We want to show that $S_N \to S$ as $n\to\infty$.
+
+I claim that:
+\[ S_N = 1 - \frac 1 {N+1}. \]
+We will proceed by induction. When $N=1$, then we have:
+\[ \frac 1 {1\cdot(1+1)} = 1- \frac 1 {1+1} = \frac 1 2. \]
+Suppose that $S_k = 1 - \frac 1 {k+1}$, we want to show that $S_{k+1} = 1 - \frac 1 {k+2}$. We have that $S_k = 1 - \frac 1 {k+1}$, so $S_{k+1}$ must equal $1 - \frac 1 {k+1} + \frac 1 {(k+1)(k+2)}$. But since we can write $\frac{1}{n(n+1)}$ as $\frac{1}{n}-\frac{1}{n+1}$, we have the following:
+
+\begin{align*}
+S_{k+1} &= 1 - \frac 1 {k+1} + \frac 1 {(k+1)(k+2)} \\
+&= 1 - \frac 1 {k+1} + \frac{1}{k+1}-\frac{1}{k+2} \\
+&= 1- \frac{1}{k+2} \\
+&= 1 - \frac 1 {(k+1) + 1}.
+\end{align*}
+Hence, our assertion that $S_N = 1 - \frac 1 {N+1}$ holds.
+
+Next, we must show that $\{ S_N \}_{N=1}^\infty = \{ 1 - \frac 1 {N+1} \}_{N=1}^\infty$ converges. I claim that $1 - \frac 1 {N+1} \to 1$ as $N \to \infty$.
+
+Fix $\epsilon > 0$. We need to find $M>0$ such that if $N\ge M$,
+\[ \left| \left(1 - \frac 1 {N+1}\right) - 1 \right| < \epsilon,\]
+or equivalently, since $|1- \frac 1 {N+1} -1 | = | \frac 1 {N+1} | > 0$, $\frac 1 {N+1} < \epsilon$.
+By the Archimedean property, there exists $M\in\mathbb N$ such that $M > \frac 1 \epsilon$, but for all $N\in\mathbb N$ such that $N\ge M$, $\frac 1 {N+1} \le \frac 1 M < \epsilon$.
+Since this is true for all $\epsilon > 0$, we have that $1 - \frac 1 {N+1} \to 1$ as $N \to \infty$.
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}

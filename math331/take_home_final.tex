@@ -1,0 +1,306 @@
+\documentclass[12pt]{amsart}
+
+\newcommand{\comment}[1]{\vskip.3cm
+\fbox{%
+\parbox{0.93\linewidth}{\footnotesize #1}}
+\vskip.3cm}
+
+
+\begin{document}
+
+\begin{center}
+{\bf Math 331 --- Take Home Final \\
+Due Wednesday, May 12, 4 pm}
+\end{center}
+
+\bigskip
+
+%{\bf Instructions:}  
+%\begin{enumerate}
+%
+%\item Do as many problems as you can.  To receive a passing grade you do not have to do all the problems, and it is better to do good work on some problems than crappy work on all the problems.  
+%
+%\item Work on this exam alone.  You may use your class notes, but no other references, printed, electronic, or sentient.
+%
+%\item Do not discuss this exam with anyone else in class.  If a conversation proceeds beyond the exchange ``{\em How's the exam?}''  ``{\em Really hard!}'' you must immediately flee the scene.
+%
+%\item If you want to use a result from class or from the homework, simply cite it as such:  e.g., say, ``{\em By a theorem proved in class}'' or ``{\em By a problem in the homework}''.
+%
+%\item If you are using a theorem from class, be sure to show that you satisfy all the hypotheses of the theorem. 
+%
+%\item I will answer questions about your lecture notes and material covered in class, but I will not provide additional hints beyond those given below.  
+%
+%\item Create a new LaTeX file for your exam; include only the statement and number of the problems that you do; do not include problems you do not do or any of the hints.  To renumber the problems so that they match the numbers that you use, use the {\tt \textbackslash item[\ldots]} command option.  For example, if you doe problem 3(a), beging the problem with {\tt \textbackslash item[3(a)]}.  Put your name in the upper left-hand corner of the first page.
+%
+%\item To create an integral use {\tt \textbackslash int}; to create upper and lower integrals, use
+%{\tt \textbackslash overline\{\textbackslash int\}} and {\tt \textbackslash underline\{\textbackslash int\}}.
+%
+%\item Copy the following statement from the LaTeX file and put it on the front page of your exam, signing your name in the space provided.
+%
+%\bigskip
+%
+%\end{enumerate}
+
+
+\fbox{%
+\parbox{0.93\linewidth}{\footnotesize  I affirm that I have read the instructions given with the exam, have had all questions about them answered, and that I have followed these instructions while working on the exam.   
+
+\vspace{0.5in}
+
+Signature:  
+
+\vspace{0.5in}}}
+
+
+\vspace{0.3cm}
+
+
+{\bf The Problems:}
+\begin{enumerate}
+
+\setlength{\itemsep}{8pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\item  Use the definition of the definite integral to show that $f : [0,1] \rightarrow \mathbb{R}$, $f(x)=\sqrt{x}$, is integrable and evaluate its integral.   
+%
+%Hint:  Consider the partition $Q_n= \{ (i/n)^2\}_{i=0}^n$; you may use the summation formula
+%%
+%\[ \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}. \]
+%%
+%Remember that $Q_n$ is not a regular partition, so you cannot directly use anything I proved about regular partitions.
+
+\begin{proof}
+Let $Q_n= \{ (i/n)^2\}_{i=0}^n$ be a partition of $[0,1]$. We want to show that $U(f,Q_n) - L(f,Q_n)=0$.
+
+Since $f$ is an increasing function, we have that:
+%
+\[ f(x_{i-1}) = m_i(f,Q_n) = \sqrt{\left(\frac{i-1}{n}\right)^2} = \frac{i-1}{n}. \]
+%
+Then we have,
+%
+\[ L(f,Q_n) = \sum_{i=1}^n \frac{i-1}{n} \Delta x_i. \]
+%
+Since $Q_n$ is not a regular partition, we find that:
+%
+\[ \Delta x_i = \frac{2i-1}{n^2}. \]
+%
+Therefore,
+%
+\[ \sum_{i=1}^n \frac{i-1}{n} \Delta x_i = \sum_{i=1}^n \frac{i-1}{n} \cdot\frac{2i-1}{n^2} = \sum_{i=1}^n \frac{2i-3i+1}{n^3}. \]
+%
+By the summation rules, we can write this as,
+%
+\[ = \sum_{i=1}^n \frac{2}{n^3} i^2 - \sum_{i=1}^n \frac {3}{n^3} i +  \sum_{i=1}^n \frac 1 {n^3}, \]
+%
+and since $n$ is actually constant in this context, we can factor it out. Then we're left with summations of $i^2$, $i$, and 1, all of which we have rules for:
+%
+\[ = \frac 2 {n^3} \cdot \frac {n\cdot(n+1)\cdot(2n+1)}{6} - \frac 3 {n^2} \cdot \frac{n\cdot(n+1)} 2 + \frac n {n^3}. \]
+%
+After combining terms and expanding, we have the following:
+%
+\[ = \frac{2n^2 + 3n +1}{3n^2} - \frac{3n+3}{2n^2} + \frac 1 {n^2}. \]
+%
+Since we want to take the limit of this as $n$ gets very large, it would help very much to put it even easier terms. Applying more algebraic rules, we get to:
+%
+\[ = \frac {4n^2 - 3n -1}{6n^2} = \frac 2 3 - \frac{3n+1}{6n^2}. \]
+%
+Finally we have an expression we can work with. Observe:
+%
+\[ \sup\{ L(f, Q_n) : n\in\mathbb N \} = \frac 2 3 \]
+%
+
+\bigskip
+
+%
+We're halfway there. Now we must show that:
+%
+\[ \inf\{ U(f, Q_n) : n\in\mathbb N \} = \frac 2 3. \]
+%
+Again, since $f$ is increasing, we have that:
+%
+\[ f(x_i) = M_i(f,Q_n) = \sqrt{\left(\frac{i}{n}\right)^2} = \frac{i}{n}. \]
+%
+So,
+%
+\[ U(f,Q_n) = \sum_{i=1}^n \frac i n \Delta x_i = \sum_{i=1}^n \frac i n \cdot \frac{2i-1}{n^2}, \]
+%
+which is the same as saying,
+%
+\[ = \sum_{i=1}^n \frac{2i^2-i}{n^3} = \sum_{i=1}^n \frac 2 {n^2} i^2 -  \sum_{i=1}^n \frac 1 {n^3} i. \]
+%
+Again, by pulling out the constant term we're left with the summations of $i^2$ and $i$, so we can apply their formulae and get:
+%
+\[ = \frac 2 {n^3}\cdot\frac{n\cdot(n+1)\cdot(2n+1)}{6} - \frac 1 {n^3}\cdot\frac{n\cdot(n+1)}{2}.\]
+%
+Now we can combine terms to get:
+%
+\[ = \frac{2\cdot(n+1)\cdot(2n+1)-3\cdot(n+1)}{6n^2} = \frac{4n^2+3n-1}{6n^2}. \]
+%
+Finally, we split up this fraction:
+%
+\[ = \frac 2 3 + \frac 1 {2n} - \frac 1 {6n^2}. \]
+%
+As $n$ gets very large, the second two terms go to zero. In other words,
+%
+\[ \inf\{ U(f, Q_n) : n\in\mathbb N \} = \frac 2 3, \]
+%
+which is exactly what we wanted to show.
+
+\bigskip
+
+Hence,
+%
+\[ U(f,Q_n) - L(f,Q_n)= \frac 2 3 - \frac 2 3 = 0, \]
+%
+so $f$ is integrable and its value is $2/3$.
+\end{proof}
+
+\item Define the function $f : [0,2] \rightarrow \mathbb{R}$ by
+%
+\[ f(x) = \begin{cases} 1  & x\leq 1 \\ 2 & x> 1. \end{cases} \]
+%
+Show that $f$ is integrable.
+%
+%Hint:  Use the Darboux criterion.  Construct a partition that contains $1$ in the center of one interval and treat this interval separately from the others.  
+
+\begin{proof}
+We will proceed using the Darboux criterion. Since $f$ is not continuous at $x=1$, we must construct a partition that has an endpoint there. Suppose we had a partition $P_L$ such that:
+%
+\[ P_L = \left\{ \frac {2i}{2n+1} \right\}_{i=0}^{n}, \]
+%
+and a partition $P_R$ such that:
+%
+\[ P_R = \left\{ \frac {2i}{n} \right\}_{i=n+1}^{2n+1}, \]
+%
+Define a partition $P = P_L + P_R$. When $i\le n$, we're working with a partition of $[0,1]$, and when $i > n$, we're working with a partition of $[1,2]$. This should work nicely to avoid the discontinuity at $x=1$.
+
+\bigskip
+
+We want to find the sum of the area under the left half of the graph and the right half of the graph, so we have:
+%
+\[ \sum_{i=0}^n f\left( \frac{2i}{2n+1} \right) \Delta x_i = \sum_{i=0}^n f\left( \frac{2i}{2n+1} \right) \cdot \frac 2 {2n+1}, \]
+%
+for the left half and,
+%
+\[ \sum_{i=n+1}^{2n+1} f\left( \frac{2i}{2n+1} \right) \Delta x_i=\sum_{i=n+1}^{2n+1} 2\cdot\frac 2{n+1}, \]
+%
+for the right half.
+\end{proof}
+
+\item Prove that for all $n\in \mathbb{N}$, $f : [a,b]\rightarrow
+  \mathbb{R}$, $f(x)=x^n$, is integrable and compute its integral.
+%
+%\smallskip
+%
+%Hint:  Use induction to prove that $x^n$ is differentiable and find
+%its derivative.   Then apply the fundamental theorem of calculus.
+
+\begin{proof}
+First we must show that $x^n$ is differentiable for all $n\in \mathbb N$. I claim that $f'(x) = nx^{n-1}$. 
+
+First, we will show that $f(x) = x^1=x$ is differentiable. I claim that its derivative is 1 for all $x\in\mathbb R$.
+
+Fix $x\in \mathbb R$. We can fairly trivial to show show that:
+%
+\[ \lim_{y\to x} \frac {f(x) - f(y)}{x-y} = \lim_{y\to x} \frac {x - y}{x-y} = 1. \]
+%
+Next we will show that $f(x) = x^n$ is differentiable for all $n\in\mathbb N$ and that its derivative is $nx^{n-1}$. We will proceed by induction. 
+
+Base case: n = 2 -- Fix $x \in \mathbb R$. We need to show:
+%
+\[ \lim_{y\to x} \frac {f(x) - f(y)} {x-y} = 2x. \]
+%
+We'll use the limit rules:
+%
+\[ \lim_{y \to x} \frac {f(x) - f(y)} {x-y} = \lim_{y \to x} \frac {x^2 - x^2} {x-y} = \lim_{y \to x}  \frac {(x-y)(x+y)} {x-y}. \]
+%
+Since in the definition of the limit as $y \to x$ $y\not=x$, we know $x-y\not=0$ and so $\tfrac{x-y}{x-y}=1$. Define $h:\mathbb R \to \mathbb R$, $h(y) = y+x$, then $h$ is continuous, so therefore,
+%
+\[ \lim_{y\to x} h(y) = h(x), \]
+%
+but then,
+%
+\[ \lim_{y\to x} y+x = x+x = 2x. \]
+%
+Inductive case: Assume that $x^k$ is differentiable for all $k \in \mathbb N$ and that $\tfrac{d}{dx} x^k = kx^{k-1}$. We want to show that $f(x)=x^{k+1}$ is differentiable, and that $f'(x) = (k+1)x^k$.
+
+Fix $x\in \mathbb R$. We need to show that,
+%
+\[ \lim_{y\to x} \frac {f(x) - f(y)} {x-y} = (k+1)x^k. \]
+%
+Again, we'll use the limit rules:
+%
+\[  \lim_{y \to x} \frac {f(x) - f(y)} {x-y} = \lim_{y \to x} \frac {x^{k+1} - y^{k+1}} {x-y} =\lim_{y \to x} \frac {x\cdot x^k - y\cdot y^k} {x-y}, \]
+%
+which is the same as saying,
+%
+\[ \lim_{y\to x} (k+1) y^k = (k+1) \lim_{y\to x}  y^k = (k+1) \left(\lim_{y\to x}  y\right)^k.  \]
+%
+Since the limit of $y$ as $y\to x$ is $x$, we have that,
+%
+\[  (k+1) \left(\lim_{y\to x}  y\right)^k = (k+1) x^k. \]
+%
+Hence, our assertion holds. Next, we must show that $f$ is integrable.
+
+Since $f$ is differentiable, it is continuous. Since $f$ is continuous, it is integrable.
+\end{proof}
+
+\item Prove the rule for integration by parts:  if $f,\,g : [a,b]
+  \rightarrow \mathbb{R}$ are continuous on $[a,b]$ and differentiable on $(a,b)$, and if
+  $f'$ and $g'$ are integrable on $[a,b]$, then 
+%
+\[ \int_a^b f(x)g'(x)\,dx = \big(f(b)g(b)-f(a)g(a)\big)-\int_a^b
+f'(x)g(x)\,dx. \]
+%
+%Hint:  Use the product rule on $h(x)=f(x)g(x)$ and the fundamental theorem of calculus.  You may assume (but must invoke this assumption explicitly) that the product of integrable functions is integrable.
+
+\begin{proof}
+Define a function $h : [a,b] \to \mathbb R$ as $h(x) = f(x)g(x)$. We want to show that:
+%
+\[ \int_a^b f(x)g'(x)dx = (h(b) - h(a)) - \int_a^b f'(x)g(x)dx \]
+%
+Since $f,\,g$ are differentiable at $x\in (a,b)$ we can use the product rule to get:
+%
+\[ h'(x) = (fg)'(x) = f'(x)g(x) + f(x)g'(x) \]
+%
+Assuming that $h$ is integrable, we can say that $h$ is an antiderivative of the function $f'(x)g(x) + f(x)g'(x)$. By the Fundamental Theorem of Calculus,
+%
+\begin{align*}
+h(b) - h(a) &= \int_a^b f'(x)g(x) + f(x)g'(x) dx \\
+&= \int_a^b f'(x)g(x)dx + \int_a^b f(x)g'(x)dx
+\end{align*}
+%
+If we rearrange the equation, we get:
+%
+\[ \int_a^b f(x)g'(x)dx = (h(b) - h(a)) - \int_a^b f'(x)g(x)dx, \]
+%
+which is precisely what we wanted to prove.
+\end{proof}
+
+%\item Suppose the function $f : [a,b] \rightarrow \mathbb{R}$ is integrable.  Define the functions
+%$f^+,\,f^- : [a,b] \rightarrow \mathbb{R}$ by
+%%
+%\begin{gather*}
+%f^+(x) = \begin{cases} f(x) & \text{ if } f(x)>0 \\ 0 &\text{ if } f(x) \leq 0 \end{cases} \\
+%f^-(x) = \begin{cases} f(x) & \text{ if } f(x)<0 \\ 0 &\text{ if } f(x) \geq 0 \end{cases}. 
+%\end{gather*}
+%%
+%Prove that $f^+,f^-$ are integrable and that
+%%
+%\[ \int_a^b f(x)\,dx = \int_a^b f^+(x)\,dx + \int_a^b f^-(x)\,dx. \]
+%%
+%
+%Hint:  Use the Darboux criterion.  Show that given any partition $P$ and any interval $[x_{i-1},x_i]$,
+%$M_i(f,P)=M_i(f^+,P)+M_i(f^-,P)$ and $m_i(f,P)=m_i(f^+,P)+m_i(f^-,P)$.
+%
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+%
+%\item (Extra Credit) Prove that if $f,\,g : [a,b] \rightarrow \mathbb{R}$ are integrable, then so is $fg$.  
+%
+%Hint:  Use problem \#5 to reduce the problem to the special case when $f,\,g$ are non-negative.  (Note that $-f^-$ is non-negative.)  Then apply the Darboux criterion and use the fact that $f,\,g$ are bounded.
+
+\end{enumerate}
+\end{document}

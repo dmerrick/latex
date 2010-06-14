@@ -1,0 +1,80 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 2 \\
+Due:  Wednesday, February 10}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+% skipping one of the problems, so increment the counter
+\addtocounter{enumi}{1}
+
+\item {\bf 3 points.} Prove Bernoulli's inequality:   for $n\in \mathbb N$ and $x>-1$, $(1+x)^n\geq 1+nx$.
+
+\begin{proof}
+Fix $x>-1$. We will proceed by induction on $n$. As a base case, when $n=1$, we have:
+\begin{align*}
+(1+x)^0= 1 &\geq 1+0x = 1
+\end{align*}
+Suppose the statement $(1+x)^k\geq 1+kx$ is true for some $k\in\mathbb N$. Then we want to show that $(1+x)^{(k+1)}\geq 1+(k+1)x$ is also true. Because we've fixed $x>-1$, $(1+x) \geq 0$. By the ordering axioms, we now have:
+
+\begin{align*}
+(1+x)^{k+1}&= (1+x)^k(1+x) \\
+&\geq (1+kx)(1+x) \\
+&\geq 1 + x + kx + kx^2 \\
+&\geq 1 + (k+1)x + kx^2
+\end{align*}
+
+This isn't exactly what we were looking for, because of the extraneous $kx^2$ term. Consider, however, that since we've fixed $x>-1$,
+\[1 + (k + 1)x + kx^2 \geq 1 + (k + 1)x \]
+Therefore we can say that the statement $(1+x)^{(k+1)}\geq 1 + (k+1)x$ is true, and thus $(1+x)^k\geq 1+kx$ is true for all $k\geq 1$.
+\end{proof}
+
+% skipping one of the problems, so increment the counter
+\addtocounter{enumi}{1}
+
+\item {\bf 3 points.} Given $a,\,b\in \mathbb R$, prove the following:
+%
+\begin{enumerate}
+
+% skipping two of the problems, so increment the counter
+\addtocounter{enumii}{2}
+
+\item  $||a|-|b||\leq |a-b|$. 
+
+\begin{proof}
+From the Triangle Inequality we have:
+\[ |x+y| \leq |x| + |y| \]
+For all $x,\,y\in \mathbb R$. Let $x=(a-b)$ and $y=b$. Then we get: 
+\begin{align*}
+|(a-b)+b| = |a|& \leq |(a-b)| + |b| \\
+|a| - |b|& \leq |a-b| \\
+\end{align*}
+In order for $\left||a| - |b|\right| \leq |a-b|$, it must be true that $|a|-|b| \ge 0$. But since $a = b+x$, we can rewrite this as:
+\[ |b+x| - |b| = |x| \ge 0 \]
+Which is true because $|x|\ge 0$ for all $x\in\mathbb R$.
+\end{proof}
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 1 Resubmit \\
+Due:  Friday, February 12}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+\renewcommand{\itemsep}{6pt}
+
+% skipping one of the problems, so increment the counter
+\addtocounter{enumi}{1}
+
+\item Prove that if $g$ is a function and $A$ and $B$ are sets
+  contained in the domain of $g$, then $g(A\cap B)\subset g(A)\cap
+  g(B)$. Give an example to prove that equality need not hold.
+  
+\begin{proof}
+Note that $g(A\cap B)$, the image of $A\cap B$ under $g$, is a set. By the definition of the image of a function,
+\[ g(A\cap B) = \{ g(x) : x \in (A\cap B) \} \]
+Let $c$ be an element in the domain of $g$ such that $g(c)\in g(A\cap B)$. By the definition of the image of $g$, $c\in (A\cap B)$. This means that $c\in A$ as well as $c\in B$, by the definition of intersection. Hence, $g(c)$ must be an element of both $g(A)$ and $g(B)$, so $g(c)\in g(A)\cap g(B)$.
+
+To show that equality need not hold, consider the function:
+\[ g(x) = x^2, \]
+and the sets $A=\mathbb Z^+\cup \{0\}$ and $B=\mathbb Z^-\cup \{0\}$.
+
+Since $A$ and $B$ are in the domain of $g$, and $g(A) = g(B) = A$, we can show that $g(A\cap B)\not\supset g(A)\cap g(B)$.
+
+Suppose on the contrary that $g(A\cap B)\supset g(A)\cap g(B)$. Then we have:
+\begin{align*}
+ g(A\cap B)&\supset g(A)\cap g(B) \\
+ g\left((\mathbb Z^+\cup \{0\}) \cap (\mathbb Z^-\cup \{0\})\right) &\supset g(\mathbb Z^+\cup \{0\}) \cap g(\mathbb Z^-\cup \{0\}) \\
+  g(\{0\}) &\supset (\mathbb Z^+\cup \{0\}) \cap (\mathbb Z^+\cup \{0\}) \\
+  \{0\} &\supset \mathbb Z^+\cup\{0\}
+ \end{align*}
+But we have reached a contradiction, because $1\in\mathbb Z^+\cup\{0\},$ but $1\not\in\{0\}.$ Therefore, $g(A\cap B)\not\supset g(A)\cap g(B)$.
+\end{proof}
+
+\item Prove that for all natural numbers $n$,
+%
+\[ \sum_{k=1}^n k = \frac{n(n+1)}{2}. \]
+  
+\begin{proof}
+Instead of using induction, we will prove this using Gauss' method of pairing numbers. Fix $n\in \mathbb N$. We will begin by choosing a name for the left side of the equation:
+\[ x = \sum_{k=1}^n k \]
+First, we will multiply $x$ by 2:
+\begin{align*}
+ 2x& = 2\sum_{k=1}^n k \\
+ 2x& = \sum_{k=1}^n k + \sum_{k=1}^n k
+\end{align*}
+Notice that we can reverse the order of the summands in second sum and remain in sigma notation. (This step follows Gauss' method, in which he paired off the first summand with the last summand, the second summand with the penultimate summand, etc.):
+\begin{equation*}
+\begin{split}
+ 2x& = \sum_{k=1}^n k + \sum_{k=1}^n (n+1-k) \\
+ & = \sum_{k=1}^n k + (n+1-k) \\
+  & = \sum_{k=1}^n (n+1) \\
+\end{split}
+\end{equation*}
+Here we have $n$ copies of $(n+1)$, so:
+\[ 2x = n(n+1) \]
+Solving the equation for $x$ and substituting back in $\sum_{k=1}^n k$ gets us:
+\begin{align*}
+x & = {{n(n+1)}\over{2}} \\
+{\sum_{k=1}^n k} & = {n(n+1)\over{2}}
+\end{align*}
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

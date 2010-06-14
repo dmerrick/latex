@@ -1,0 +1,47 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 3 \\
+Due:  Wednesday, February 17}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\item Define the set
+%
+\[ E = \left\{ \frac{n}{n^2+1} : n \in \mathbb{N}\right\}. \]
+%
+Find $\inf E$.
+\begin{proof}
+Assuming we're using the $\mathbb N = \{1,2,3,\ldots\}$, the first few elements of the set look like this:
+\[ E = \left\{ \frac{1}{1^2+1}, \frac{2}{2^2+1}, \frac{3}{3^2+1}, \ldots\right\} = 
+\left\{\frac 1 2, \frac 2 5, \frac 3 {10}, \ldots\right\} \]
+I claim $\inf E = 0$. In order for this to be true we need to satisfy two properties: that $0$ is a lower bound of $E$, and that given any other lower bound $x\in E$, $x\le\inf E$. Since $\mathbb N$ is made up of positive numbers, every element of $E$ will be positive. Therefore $0$ is a lower bound of $E$.
+
+To show that $0$ is the greatest lower bound of $E$, we will proceed by contradiction. Assume that there is another lower bound of $E$, call it $y$, such that $y>0$. By the Archimedian property, we can find a $z\in E$ of the form $z= \frac m {m^2+1}$ such that $0<z<y$ by using an arbitrarily large $m$.
+This contradicts the fact that $y$ is lower bound of $E$.
+
+Therefore $0$ must be the greatest lower bound of $E$.
+\end{proof}
+
+\end{enumerate} 
+
+\end{document}

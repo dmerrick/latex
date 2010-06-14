@@ -1,0 +1,84 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 5 \\
+Due:  Friday, March 12}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\addtocounter{enumi}{1}
+
+\item Prove that $\{\sqrt{1+1/n} \}_{n=1}^\infty$ converges to $1$ as $n\rightarrow \infty$. 
+
+Hint:  Use the identity $(\sqrt{x}-\sqrt{y})(\sqrt{x}+\sqrt{y})=x-y$.
+  
+\begin{proof}
+Fix $\epsilon>0$. We need to find $N>0$ such that if $n\ge N$,
+\[ \left| \sqrt{1+\frac 1 n} - 1\right| < \epsilon.\]
+We can disregard the absolute value signs because $\sqrt{1+\frac 1 n} \ge 1$ for all $n$. Since $(\sqrt{x}-\sqrt{y})(\sqrt{x}+\sqrt{y})=x-y$, we can multiply both sides by $\frac {\sqrt{1+\frac 1 n} + 1}{\sqrt{1+\frac 1 n} + 1}$ to get:
+\begin{align*}
+\left(\sqrt{1+\frac 1 n} - 1\right)\cdot \left(\frac {\sqrt{1+\frac 1 n} + 1}{\sqrt{1+\frac 1 n} + 1} \right) &= \frac {(1+\frac 1 n) - 1}{\sqrt{1+\frac 1 n} + 1} \\
+&= \frac {\frac 1 n}{\sqrt{1+\frac 1 n} + 1}.
+\end{align*}
+We need to show that: 
+\[ \frac {\frac 1 n}{\sqrt{1+\frac 1 n} + 1} < \epsilon. \]
+Since $\sqrt{1+\frac 1 n} + 1 \ge  2$, we have that:
+\[\frac {\frac 1 n}{\sqrt{1+\frac 1 n} + 1} < \frac {\left(\frac 1 n\right)}{2} = \frac 1 {2n} < \epsilon.
+\]
+By the Archimedean property, there exists $N\in\mathbb N$ such that $N > \frac 1 {2\epsilon}$. Therefore, for all $n\ge N$,
+\[ 
+\frac 1 n \le \frac 1 N \le \frac 1 {2\epsilon}.
+\]
+Hence, $\frac 1 {2n} < \epsilon$.
+\end{proof}
+
+\item Prove that given the sequence $\{a_n\}_{n=1}^\infty$, if
+  $a_n\geq 0$ and $a_n\rightarrow L$ as $n\rightarrow \infty$, then
+  $\sqrt{a_n}\rightarrow \sqrt{L}$ as $n\rightarrow \infty$. 
+  
+\begin{proof}
+Fix $\epsilon>0$. We need to find $N>0$ such that if $n\ge N$,
+\[ \left| \sqrt{a_n} - \sqrt{L}\right| < \epsilon.\]
+We will proceed by cases.
+
+Case 1: $L=0$.
+
+ If $L=0$, then $\sqrt L = 0$, so:
+\[ \left| \sqrt{a_n} - \sqrt{L}\right| = \left| \sqrt{a_n} - 0\right| = |\sqrt {a_n}| < \epsilon.\]
+But we have that $a_n \ge 0$ so $\sqrt {a_n} \ge 0$ for all $n$. Since $a_n\to 0$ as $n\to \infty$, we can choose a sufficiently large $n$ such that $a_n < \epsilon$.
+
+Case 2: $L>0$.
+
+If $L>0$, then we want to show that:
+ \[ \left| \sqrt{a_n} - \sqrt{L}\right| < \epsilon.\]
+Since both $\sqrt{a_n}$ and $\sqrt L$ are positive, we can disregard the absolute value signs. Multiplying by $\frac {\sqrt{a_n} + \sqrt{L}}{\sqrt{a_n} + \sqrt{L}}$, we get the following:
+\begin{align*}
+\sqrt{a_n} - \sqrt{L}&= \left(\sqrt{a_n} - \sqrt{L}\right)\cdot \left(\frac {\sqrt{a_n} + \sqrt{L}}{\sqrt{a_n} + \sqrt{L}}\right) \\
+&= \frac {a_n - L} {\sqrt{a_n} + \sqrt{L}}
+\\&< \epsilon
+\end{align*}
+We need to show that we can make $\frac {a_n - L} {\sqrt{a_n} + \sqrt{L}}$ smaller than $\epsilon$. Since we know that $a_n\rightarrow L$ as $n\rightarrow \infty$, for all $\delta > 0$ there exists an $M>0$ such that for all $n\ge M$, $|a_n - L| < \delta$.
+\end{proof}
+\end{enumerate}
+
+
+\end{document}

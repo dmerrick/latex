@@ -1,0 +1,221 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 2 \\
+Due:  Wednesday, February 10}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+\item  Given $x,\,y>0$,  prove the following:
+
+\begin{enumerate}
+%
+\item $x<y$ if and only if $x^2<y^2$.
+
+\begin{proof}
+Let $x<y$. It follows from the ordering axioms that $xx<yx$ and $xy<yy$. Therefore, by the Transitive Property, $xx<yy$, or, $x^2 < y^2$.
+
+On the other hand, suppose on the contrary that $x\geq y$. We want to show that this implies $x^2\geq y^2$. By an argument similar to the implication, by the ordering axioms we have that $xx\geq yx$ and $xy\geq yy$. We can once again invoke the Transitive Property to get $xx\geq yy$ or $x^2\geq y^2$.
+\end{proof}
+
+\item $x<y$ if and only if   $x^{1/2}<y^{1/2}$.
+
+\begin{proof}
+Let $x^{1/2}<y^{1/2}$. Then by (1a) we have:
+\begin{align*}
+{(x^{1/2})}^2& < {(y^{1/2})}^2 \\
+x& < y
+\end{align*}
+On the other hand, let $x<y$. Suppose on the contrary that $y^{1/2} \leq x^{1/2}$. Then by (1a) we have:
+\begin{align*}
+{(y^{1/2})}^2& \leq {(x^{1/2})}^2 \\
+y& \leq x
+\end{align*}
+This contradicts the first hypothesis.
+\end{proof}
+
+\end{enumerate}
+
+\item Prove Bernoulli's inequality:   for $n\in \mathbb N$ and $x>-1$, $(1+x)^n\geq 1+nx$.
+
+\begin{proof}
+Fix $x>-1$. We will proceed by induction on $n$. As a base case, when $n=1$, we have:
+\begin{align*}
+(1+x)^0& \geq 1+0x \\
+1& \geq 1
+\end{align*}
+Which is a true statement. Suppose the statement $(1+x)^k\geq 1+kx$ is true. Then we want to show that $(1+x)^{(k+1)}\geq 1+(k+1)x$ is also true. Because we've fixed $x>-1$, we can say that the statement $(1+x) \geq 0$ is true. By the ordering axioms, we now have:
+\begin{align*}
+(1+x)^k&\geq 1+kx \\
+(1+x)^k(1+x)&\geq (1+kx)(1+x) \\
+(1+x)^{(k+1)}&\geq 1 + x + kx + kx^2 \\
+&\geq 1 + (k+1)x + kx^2
+\end{align*}
+This isn't exactly what we were looking for, because of the extraneous $kx^2$ term. Consider, however, that since we've fixed $x>-1$,
+\[1 + (k + 1)x + kx^2 \geq 1 + (k + 1)x \]
+Therefore we can say that the statement $(1+x)^{(k+1)}\geq 1 + (k+1)x$ is true, and thus $(1+x)^k\geq 1+kx$ is true for all $k\geq 1$.
+\end{proof}
+\item Given non-negative numbers $a_1,\ldots, a_n$ and $b_1,\ldots,b_n$, $n\geq 1$, prove
+  the Cauchy-Schwartz inequality 
+%
+\[ \sum_{k=1}^n a_kb_k \leq \left(\sum_{k=1}^n a_k^2 \right)^{1/2}
+\left(\sum_{k=1}^n b_k^2 \right)^{1/2}. \]
+%
+
+Hint:  Denote the terms on the right-hand side by $A$ and $B$, let
+$c_k=Ba_k-Ab_k$, and evaluate
+%
+\[ 0\leq \sum_{k=1}^n c_k^2. \]
+%
+(Why is this inequality true?)  You will have to re-arrange terms to
+get the desired answer---you cannot work ``left to right.''
+
+\begin{proof}
+Let $A=\left(\sum_{k=1}^n a_k^2 \right)^{1/2}$ and $B=\left(\sum_{k=1}^n b_k^2 \right)^{1/2}$. Rewrite the expression as the following:
+\begin{align*}
+\sum_{k=1}^n a_kb_k &\leq \left(\sum_{k=1}^n a_k^2 \right)^{1/2}
+\left(\sum_{k=1}^n b_k^2 \right)^{1/2}. \\
+&\leq A B
+\end{align*}
+Let $c_k=Ba_k-Ab_k$. Consider the expression:
+\begin{align*}
+0 &\leq \sum_{k=1}^n c_k^2 \\
+0 &\leq \sum_{k=1}^n (Ba_k-Ab_k)^2 \\
+0 &\leq \sum_{k=1}^n (Ba_k)^2 - 2(Ba_kAb_k) - (Ab_k)^2 \\
+0 &\leq \sum_{k=1}^n (Ba_k)^2 - \sum_{k=1}^n2(Ba_kAb_k) - \sum_{k=1}^n(Ab_k)^2 \\
+2\sum_{k=1}^n(Ba_kAb_k) &\leq \sum_{k=1}^n (Ba_k)^2 - \sum_{k=1}^n(Ab_k)^2 \\
+&\leq \vdots \quad (?) \\
+\end{align*}
+\end{proof}
+
+\item Given $a,\,b\in \mathbb R$, prove the following:
+%
+\begin{enumerate}
+
+\item $|a|\geq a$;
+
+\begin{proof}
+Let $a\in \mathbb R$. We will proceed by cases:
+\begin{enumerate}
+\item If $a\geq 0$, then $|a|=a$, so $|a|\geq a$.
+\item If $a\leq 0$, then $|a| \geq 0 \geq a$ and thus $|a| \geq a$.
+\end{enumerate}
+Hence, regardless of whether $a$ is positive or negative, the assertion holds.
+\end{proof}
+
+\item $|ab|=|a||b|$;
+
+\begin{proof}
+Let $a,\,b\in \mathbb R$. We will proceed by cases:
+\begin{enumerate}
+\item If $a,\,b\geq 0$, then $|a| = a$ and $|b|=b$, so $ab\geq 0$ and $|ab| = ab = |a||b|$.
+\item If $a,\,b\leq 0$, then $|a| = -a$ and $|b|=-b$, so $ab\geq 0$ and $|ab| = ab = (-a)(-b)= |a||b|$.
+\item If $a\geq 0$ and $b\leq 0$, then $|a| = a$ and $|b|=-b$, so $ab\leq 0$ and $|ab| = -ab = a(-b)= |a||b|$.
+\item If $a\leq 0$ and $b\geq 0$, then $|a| = -a$ and $|b|=b$, so $ab\leq 0$ and $|ab| = -ab = (-a)b= |a||b|$.
+\end{enumerate}
+Hence, regardless of whether $a$ is positive or negative, the assertion holds.
+
+\end{proof}
+
+\item  $||a|-|b||\leq |a-b|$. 
+
+\begin{proof}
+From the Triangle Inequality we have:
+\[ |x+y| \leq |x| + |y| \]
+For all $x,\,y\in \mathbb R$. Let $x=(a-b)$ and $y=b$. Then we get: 
+\begin{align*}
+|(a-b)+b| = |a|& \leq |(a-b)| + |b| \\
+|a| - |b|& \leq |a-b| \\
+\end{align*}
+\end{proof}
+\end{enumerate}
+
+\item Use the Cantor diagonalization argument to prove that the set of
+  sequences 
+%
+\[ S=\big\{ \{a_n\}_{n=1}^\infty : a_n\in \mathbb{Z}, 0\leq a_n \leq 9
+  \big\} \]
+%
+is uncountable.
+
+\begin{proof}
+We will prove this by contradiction. Suppose the set S is not uncountable. Then it is either countable or finite. However, S is not finite.
+Consider the family of sequences:
+\[ V = \left\{ \{1,0,0,\ldots\}, \{0,1,0,\ldots\}, \{0,0,1,\ldots\}, \ldots \right\} \]
+This set is clearly a subset of S. Since V is countable, S cannot be finite.
+Therefore S is countable. In other words, we can enumerate $S=\{a_k\}^\infty_{k=1}$ where $V=\{a^k_n\}^\infty_{n=1}, a^k_n=0,1$.
+Define a new sequence $\{b_n\}^\infty_{n=1}$ where $b_n = 9 - a^n_n, n\in\mathbb N, 0\leq b_n \leq 9$. For example:
+\begin{align*}
+A_1 &= \{a^1_1, a^1_2, a^1_3, \ldots \} \\
+A_2 &= \{a^2_1, a^2_2, a^2_3, \ldots \} \\
+A_3 &= \{a^3_1, a^3_2, a^3_3, \ldots \} \\
+B_1 &= \{b_1, b_2, b_3, \ldots \} \\
+&= \{9-a^1_1, 9-a^1_2, 9-a^1_3, \ldots \}
+\end{align*}
+Further, $b_n \ne a^n_n$ for any $n$. I claim that $\{b_n\}^\infty_{n=1}$ is different from every sequence $\{a^k_n\}^\infty_{n=1}$, because $\{b_n\}^\infty_{n=1}$ differs from $A_k$ in the $k$th element. But this contradicts the fact that $A_k$'s are an enumeration of $S$, i.e. every element of $S$ is given by one of the $A_k$'s. Hence, our original assumption is false and $S$ is uncountable.
+\end{proof}
+
+% skipping one of the problems, so increment the counter
+\addtocounter{enumi}{1}
+
+\item   (Extra Credit) Define the binomial coefficients by
+%
+\[ \binom{n}{k} = \frac{n!}{k!(n-k)!}, \quad 0\leq k \leq n. \]
+%
+(Recall that $0!=1$.)  Prove Pascal's identity:  for each $n\geq 0$ and for each $k$,
+$1\leq k \leq n$, 
+%
+\[ \binom{n}{k-1}+\binom{n}{k} = \binom{n+1}{k}. \]
+%
+
+\begin{proof}
+By the definition of the binomial coefficient:
+\begin{align*}
+\binom{n}{k-1}+\binom{n}{k}& = \frac{n!}{(k-1)!(n-k+1)!} + \frac{n!}{(n-k)!k!} \\
+& = \frac{n!k+n!(n-k+1)}{k!(n-k+1)!} \\
+& = \frac{n!(n+1)}{k!(n+1-k)!} \\
+& = \binom{n+1}{k}.
+\end{align*}
+\end{proof}
+
+\item (Extra Credit)
+Prove the binomial theorem: given real numbers $a$ and $b$, and $n\geq
+0$,
+\[ (a+b)^n = \sum_{k=0}^n \binom{n}{k}a^kb^{n-k}. \]
+
+\begin{proof}
+We will proceed by induction on $n$. As a base case, when $n=1$, the assertion holds, because:
+\[ (a+b)^1 = \sum_{k=0}^1 \binom{1}{k}a^kb^{1-k}. \]
+Suppose that the assertion is true for $n\geq 1$. Then:
+\begin{align*}
+(a+b)^{n+1} &= (a+b) \left[ \sum_{k=0}^n \binom{n}{k}a^kb^{n-k} \right] \\
+&= \sum_{k=0}^n \binom{n}{k}a^{k+1}b^{n-k} + \sum_{k=0}^n \binom{n}{k}a^kb^{n+1-k} \\
+&= \sum_{k=1}^{n+1} \binom{n}{k-1}a^{k}b^{n+1-k} + \sum_{k=0}^n \binom{n}{k}a^kb^{n+1-k} \\
+&= \vdots \quad (?) \\
+&= \sum_{k=0}^{n+1} \binom{{n+1}}{k}a^kb^{{n+1}-k}. \\
+\end{align*}
+
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

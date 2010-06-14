@@ -1,0 +1,163 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 6 \\
+Due:  Friday, March 19 \\
+Pushed back to Monday, March 29}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+
+\item Prove that if $\{a_n\}_{n=1}^\infty$ is a Cauchy
+  sequence, then it is bounded.
+
+Hint:  follow the proof that convergent sequences are bounded.
+
+\begin{proof}
+If $\{a_n\}_{n=1}^\infty$ is Cauchy, then for any $\epsilon >0$, there exists an $N>0$ such that for all $n,\,m \ge N$, $|a_n -a_m| < \epsilon$. If $\epsilon = 1$, there exists an $N_1$ such that for all $m,\,n > N_1$, $|a_n -a_m| < 1$.
+
+Using the triangle inequality, we know that for all $a,\,b,\,c\in\mathbb Z$, the following holds:
+\[ \big| |a - c| - |b-c| \big| \le |a - b|. \]
+Let $m = N_1 + 1$. By the triangle inequality, for any $n>N_1$, we have:
+\begin{align*}
+\big| |a_n - a_{N_1} | - |a_n - a_m | \big| &\le |a_{N_1} - a_m | \\
+\big| |a_n - a_{N_1} | - |a_n - a_{(N_1 + 1)} | \big| &\le |a_{N_1} - a_{(N_1+1)} | \\
+&<1 
+\end{align*}
+
+Therefore, $|a_n - a_{N_1}| < |a_n - a_{(N_1+1)}| + 1$.
+
+Let $M=\max\left(|a_{N_1}-a_1|, |a_{N_1}-a_2|, \ldots, |a_{N_1}-a_{N_1}|, |a_{N_1}-a_{(N_1+1)}|\right) + 1$.
+
+Then for all $n\in\mathbb N$, $|a_n - a_{N_1}| \le M$. Hence, $\{a_n\}_{n=1}^\infty$ is bounded by $M$.
+\end{proof}
+
+\item Prove that the series
+%
+$\displaystyle \sum_{n=1}^\infty \frac{1}{n(n+1)}$
+%
+converges and find its sum.
+
+\medskip
+
+\noindent Hint:  Use induction and the fact that $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$ 
+to find the partial sums.
+
+\begin{proof}
+Let $\{S_N\}_{n=1}^\infty$ be the series of partial sums where $S_N = \sum_{n=1}^N  \frac{1}{n(n+1)}$. We want to show that $S_N \to S$ as $n\to\infty$.
+
+I claim that:
+\[ S_N = 1 - \frac 1 {N+1}. \]
+We will proceed by induction. When $N=1$, then we have:
+\[ \frac 1 {1\cdot(1+1)} = 1- \frac 1 {1+1} = \frac 1 2. \]
+Suppose that $S_k = 1 - \frac 1 {k+1}$, we want to show that $S_{k+1} = 1 - \frac 1 {k+2}$. We have that $S_k = 1 - \frac 1 {k+1}$, so $S_{k+1}$ must equal $1 - \frac 1 {k+1} + \frac 1 {(k+1)(k+2)}$. But since we can write $\frac{1}{n(n+1)}$ as $\frac{1}{n}-\frac{1}{n+1}$, we have the following:
+
+\begin{align*}
+S_{k+1} &= 1 - \frac 1 {k+1} + \frac 1 {(k+1)(k+2)} \\
+&= 1 - \frac 1 {k+1} + \frac{1}{k+1}-\frac{1}{k+2} \\
+&= 1- \frac{1}{k+2} \\
+&= 1 - \frac 1 {(k+1) + 1}.
+\end{align*}
+Hence, our assertion that $S_N = 1 - \frac 1 {N+1}$ holds.
+\end{proof}
+
+\item Given two convergent series $\displaystyle
+  \sum_{n=1}^\infty a_n$ and $\displaystyle \sum_{n=1}^\infty b_n$,
+  and any constant $c\in \mathbb{R}$, prove the following:
+\begin{enumerate}
+
+\item $\displaystyle \sum_{n=1}^\infty ca_n = c\sum_{n=1}^\infty a_n$.
+
+\begin{proof}
+Since $\sum_{n=1}^\infty a_n$ converges, we have a series of partial sums $\{S_N\}_{n=1}^\infty$ where:
+\[ S_N = \sum_{n=1}^N a_n. \]
+Further, we know that $S_N \to S$ as $n \to \infty$.
+
+Since we know that $c\{S_N\}_{n=1}^\infty = \{cS_N\}_{n=1}^\infty$, it follows that:
+\[ c\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty ca_n. \]
+%This can be checked easily directly from the definition; it is in effect the same proof that the sum of two convergent sequences is convergent etc.
+
+%``And the proof is exactly the same as two convergent sequences where the partial sums become the terms of the sequences."
+\end{proof}
+
+\item $\displaystyle \sum_{n=1}^\infty \big(a_n+b_n \big) = 
+\sum_{n=1}^\infty a_n + \sum_{n=1}^\infty b_n$.
+
+\begin{proof}
+Since $\sum_{n=1}^\infty a_n$ and $\sum_{n=1}^\infty b_n$ converge, we have two series of partial sums $\{S_N^a\}_{n=1}^\infty$ and $\{S_N^b\}_{n=1}^\infty$ where:
+\[ S_N^a = \sum_{n=1}^N a_n \\
+\textrm{ and } \\
+S_N^b = \sum_{n=1}^N b_n \]
+Further, we know that $S_N^a \to S^a$ and $S_N^b \to S^b$ as $n \to \infty$.
+
+We know from the arithmetic of series that:
+\[ \{S_N^a\}_{n=1}^\infty + \{S_N^b\}_{n=1}^\infty =  \{S_N^a + S_N^b\}_{n=1}^\infty, \]
+and that $\left(S_N^a + S_N^b\right) \to \left(S^a + S^b\right)$ as $n\to\infty$. It follows that:
+\[\sum_{n=1}^\infty a_n + \sum_{n=1}^\infty b_n =
+ \sum_{n=1}^\infty \big(a_n+b_n \big). \]
+\end{proof}
+
+\end{enumerate}
+
+\item Prove that the series $\displaystyle \sum_{n=1}^\infty 
+\frac{1}{n}$ diverges.
+
+\medskip
+
+\noindent Hint:  Show by induction that the partial sums $S_{2^k}$ are bounded below by
+$k/2$.  Use this to deduce that the sequence of partial sums diverges.
+
+\begin{proof}
+Notice we have the following:
+%\[ \sum_{n=1}^\infty \frac{1}{n} = 
+%\underbrace{\left(1\right)}_{S_1} + 
+%\underbrace{\left(\frac{1}{2}+\frac{1}{3}\right)}_{S_2} +
+%\underbrace{\left(\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right)}_{S_3} + 
+%\cdots \]
+\begin{align*}
+\sum_{n=1}^\infty \frac{1}{n} &= 
+\left(1\right) +
+\left(\frac{1}{2}+\frac{1}{3}\right) +
+\left(\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right) +
+\cdots \\
+&= S_1 + S_2 + S_3 + \cdots
+\end{align*}
+Note that there are $2^k$ summands in each $S_k$. Since each of the summands in a given $S_k$ is greater than $\frac {1} {2^{k+1}}$, we have that $S_k > \frac{2^k}{2^{k+1}}=\frac 1 2$.
+
+Therefore, since $\sum_{n=1}^\infty \frac{1}{n} = \sum_{k=1}^\infty S_k$, we have that:
+\[ \sum_{k=1}^\infty S_k > \sum_{k=1}^\infty \frac{1}{2}, \]
+which diverges. Hence, $\sum_{n=1}^\infty \frac{1}{n}$ must diverge.
+\end{proof}
+
+%\item Prove that if $\{a_n\}_{n=1}^\infty$ is a bounded sequence, and for all $n$, $a_n<\sup\{a_n\}$, then it has a subsequence that converges to $\sup\{a_n\}$.
+
+%Hint:  Adapt the proof of the monotone convergence theorem by showing that for any $\epsilon>0$, there exist an infinite number of values of $n$ such that $\sup\{a_n\} - \epsilon < a_n \leq \sup\{a_n\}$.   (Prove this by contradition:  if this not true, show that there exists $n_0$ such that $a_{n_0}$ is an upper bound for the sequence.)  Use this fact to construct a subsequence as we did in the proof of the Bolzano-Weierstrass theorem.
+
+
+%\begin{proof}
+%Proof goes here.
+%\end{proof}
+
+\end{enumerate}
+
+\end{document}

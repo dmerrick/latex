@@ -1,0 +1,137 @@
+\documentclass[12pt]{amsart}
+
+\textwidth=1.25\textwidth
+\calclayout
+
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+{\bf Math 331  --- Homework 5 \\
+Due:  Friday, March 12}
+\end{center}
+
+\bigskip
+
+\noindent
+Dana Merrick \\
+\today
+
+\bigskip
+
+\begin{enumerate}
+
+\setlength{\itemsep}{6pt}
+
+
+\item Prove that $\frac{3n+1}{2n+5}\rightarrow 3/2$ as
+  $n\rightarrow\infty$.
+  
+\begin{proof}
+Fix $\epsilon>0$. We need to find $N>0$ such that if $n\ge N$,
+\[ \left|\frac{3n+1}{2n+5} - \frac 3 2\right| < \epsilon.\]
+Since $\frac{3n+1}{2n+5} - \frac 3 2 = \frac{-13}{2(2n+5)}$, we want to show:
+\[ \epsilon > \left|\frac{3n+1}{2n+5} - \frac 3 2\right| = \left|\frac{-13}{2(2n+5)}\right| = \frac{13}{2(2n+5)} \]
+By the Archimedian Property, there exists $N\in\mathbb N$ such that $N>\frac{13}{4\epsilon}$. Therefore, for all $n\ge N$,
+\[\frac 1 n \le \frac 1 N \le \frac{13}{4\epsilon}\]
+Hence $\frac{13}{2n+5} < \frac{13}{2n} < 2\epsilon$ and so $\frac{13}{2(2n+5)} < \epsilon$.
+\end{proof}
+
+\item Prove that $\{\sqrt{1+1/n} \}_{n=1}^\infty$ converges to $1$ as $n\rightarrow \infty$. 
+
+Hint:  Use the identity $(\sqrt{x}-\sqrt{y})(\sqrt{x}+\sqrt{y})=x-y$.
+  
+\begin{proof}
+Fix $\epsilon>0$. We need to find $N>0$ such that if $n\ge N$,
+\[ \left| \sqrt{1+1/n} - 1\right| < \epsilon.\]
+Since $\sqrt x \ge 0$ for all $x\in\mathbb R$, we can say that for any $\delta  > 0$,
+\[  \delta\cdot(\sqrt{1+1/n} + 1) \ge \delta > 0 \]
+for all $n$. Therefore, we can use the property $(\sqrt{x}-\sqrt{y})(\sqrt{x}+\sqrt{y})=x-y$ and multiply both sides by $(\sqrt{1+1/n} + 1)$.
+\begin{align*}
+(\sqrt{1+1/n} - 1)(\sqrt{1+1/n} + 1) &< \delta\cdot(\sqrt{1+1/n} + 1)\\
+(1+1/n) - 1) &< \delta\cdot(\sqrt{1+1/n} + 1) \\
+1/n &< \delta\cdot(\sqrt{1+1/n} + 1)
+\end{align*}
+(\ldots stuck)
+\end{proof}
+
+\item Prove that given the sequence $\{a_n\}_{n=1}^\infty$, if
+  $a_n\geq 0$ and $a_n\rightarrow L$ as $n\rightarrow \infty$, then
+  $\sqrt{a_n}\rightarrow \sqrt{L}$ as $n\rightarrow \infty$. 
+  
+\begin{proof}
+Fix $\epsilon>0$. We need to find $N>0$ such that if $n\ge N$,
+\[ \left| \sqrt{a_n} - \sqrt{L}\right| < \epsilon.\]
+%Since $a_n\to L$ as $n\to\infty$, by the definition of convergence there exists an $N_1>0$ such that for all $n \ge N_1$, $|a_n-L| < 1$. 
+We also know that for some $\delta > 0$:
+\[ 0< \delta +2\sqrt L < \delta \cdot (\delta + 2\sqrt L). \]
+Therefore, for all $n\ge N$,
+\begin{align*}
+a_n - L &<  \delta \cdot (\delta + 2\sqrt L) \\
+a_n &<\delta ^2+2 \cdot \delta\cdot\sqrt{L}+L \\
+&<(\delta +\sqrt{L})^2 \\
+\sqrt{a_n} &<\delta +\sqrt{L}.
+\end{align*}
+(\ldots stuck)
+\end{proof}
+
+\item Prove the Squeeze Lemma: given sequences $\{b_n\}_{n=1}^\infty$,
+  $\{a_n\}_{n=1}^\infty$, $\{c_n\}_{n=1}^\infty$ such that $a_n\leq
+  b_n\leq c_n$, if $a_n\rightarrow L$ and $c_n\rightarrow L$ as
+  $n\rightarrow \infty$, then $b_n\rightarrow L$. 
+  
+\begin{proof}
+Fix $\epsilon > 0$. We need to find $N>0$ such that if $n\ge N$, $|b_n-L|<\epsilon$.
+
+Since $a_n \to L$ as $n\to\infty$, we know that there exists an $N_a>0$ such that for all $n\ge N_a$, $|a_n-L|<\epsilon$. Similarly, we know that since $c_n \to L$ as $n\to\infty$, there exists an $N_c>0$ such that for all $n\ge N_c$, $|c_n-L|<\epsilon$.
+
+Let $N=\max(N_a, N_c)$. Then if $n>N, n>N_a$ and $n>N_c$. But if $|a_n-L| < \epsilon$, then $L-\epsilon < a_n < L + \epsilon$ for all $n>N$. Similarly, $L-\epsilon < c_n < L + \epsilon$ for all $n>N$.
+
+Since $a_n\leq b_n\leq c_n$,
+\[ L-\epsilon < a_n\leq b_n\leq c_n < L+\epsilon, \]
+so for all $n>N$, $L-\epsilon < b_n < L +\epsilon$. Hence, for all $n>N$, $|b_n-L|<\epsilon$.
+
+\end{proof}
+
+\item Given sequences $\{a_n\}_{n=1}^\infty$ and
+  $\{b_n\}_{n=1}^\infty$ such that $a_n\rightarrow L_a$  and $b_n
+  \rightarrow L_b$ as $n\rightarrow \infty$, then:
+\begin{enumerate}
+\item if $c\in \mathbb{R}$, then $ca_n \rightarrow cL_a$ as
+  $n\rightarrow \infty$;
+  \begin{proof}
+Fix $\epsilon > 0$.  We need to find $N>0$ such that if $n\ge N$, $|ca_n-cL_a|<\epsilon$. Assume $c\not=0$, since if $c=0$ the result is trivial.
+
+Because $|c|>0$, we have that $\frac \epsilon {|c|} > 0$.
+
+Since $a_n \to L_a$ as $n\to\infty$, there exists an $N>0$ such that for all $n\ge N$, $|a_n - L_a| < \frac \epsilon {|c|}$. Equivalently, we can say that:
+\begin{align*}
+\epsilon > |c| \cdot |a_n - L_a| &= |c\cdot(a_n - L_a)| \\
+&= |ca_n - cL_a|.
+\end{align*}
+Hence, for all $n>N$, $|ca_n-cL_a|<\epsilon$, and thus $ca_n \rightarrow cL_a$ as $n\rightarrow \infty$.
+\end{proof}
+
+\item if $L_b\neq 0$, then $\displaystyle \frac{a_n}{b_n}\rightarrow
+  \frac{L_a}{L_b}$ as $n\rightarrow \infty$.
+  \begin{proof}
+Fix $\epsilon > 0$.  We need to find $N>0$ such that if $n\ge N$, $|\frac{a_n}{b_n}-\frac{L_a}{L_b}|<\epsilon$.
+Since $L_b\not =0$, it follows that $|L_b|>0$.
+Now consider:
+\begin{align*}
+\left|\frac{a_n}{b_n}-\frac{L_a}{L_b}\right| &= \left|\frac{a_n \cdot L_b - L_a \cdot b_n}{b_n \cdot L_b}\right| \\
+&= \frac {|a_nL_b - a_nb_n + a_nb_n - L_ab_n|}{|b_n||L_b|}
+\end{align*}
+From the lemma provided in the sketch for this proof, since $b_n \to L_b$ as $n \to \infty$, there exists some $n_0 \ge 0$ such that for all $n\ge n_0$, $|b_n-L_b| > \frac{|L_b|} 2$.
+%\[  \left|\frac{L_b\cdot a_n - b_n \cdot L_a}{L_b \cdot b_n}\right| < \frac 2 {|L_b|^2} \cdot |L_b \cdot a_n - b_n \cdot L_a| \]
+%By the addition property convergent sequences and (5a), we know that $L_b \cdot a_n - b_n \cdot L_a \to L_bL_a - L_bL_a$ as $n\to\infty$.
+
+(\ldots stuck)
+\end{proof}
+  \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
